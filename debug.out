@@ -1,0 +1,63 @@
+(rust_build) [mannlk@login02 krABMaga]$ RUST_BACKTRACE=1 cargo build --release --features "parallel distributed_mpi"
+   Compiling mpi-sys v0.2.3
+error: failed to run custom build command for `mpi-sys v0.2.3`
+note: To improve backtraces for build dependencies, set the CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true environment variable to enable de
+bug information generation.
+
+Caused by:
+  process didn't exit successfully: `/nfs/home/mannlk/krABMaga/target/release/build/mpi-sys-b3b2dd93faeca0ae/build-script-build` (exit status
+: 101)
+  --- stdout
+  OPT_LEVEL = Some(3)
+  OUT_DIR = Some(/nfs/home/mannlk/krABMaga/target/release/build/mpi-sys-446f4aea566dee3b/out)
+  cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  TARGET = Some(x86_64-unknown-linux-gnu)
+  DEBUG = Some(false)
+  CARGO_CFG_TARGET_FEATURE = Some(fxsr,sse,sse2)
+  HOST = Some(x86_64-unknown-linux-gnu)
+  cargo:rerun-if-env-changed=CFLAGS
+  CFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CFLAGS
+  HOST_CFLAGS = None
+  cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu
+  CFLAGS_x86_64_unknown_linux_gnu = None
+  cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu
+  CFLAGS_x86_64-unknown-linux-gnu = None
+  CARGO_ENCODED_RUSTFLAGS = Some()
+  cargo:rerun-if-env-changed=AR_x86_64-unknown-linux-gnu
+  AR_x86_64-unknown-linux-gnu = None
+  cargo:rerun-if-env-changed=AR_x86_64_unknown_linux_gnu
+  AR_x86_64_unknown_linux_gnu = None
+  cargo:rerun-if-env-changed=HOST_AR
+  HOST_AR = None
+  cargo:rerun-if-env-changed=AR
+  AR = None
+  cargo:rerun-if-env-changed=ARFLAGS
+  ARFLAGS = None
+  cargo:rerun-if-env-changed=HOST_ARFLAGS
+  HOST_ARFLAGS = None
+  cargo:rerun-if-env-changed=ARFLAGS_x86_64_unknown_linux_gnu
+  ARFLAGS_x86_64_unknown_linux_gnu = None
+  cargo:rerun-if-env-changed=ARFLAGS_x86_64-unknown-linux-gnu
+  ARFLAGS_x86_64-unknown-linux-gnu = None
+  cargo:rustc-link-lib=static=rsmpi
+  cargo:rustc-link-search=native=/nfs/home/mannlk/krABMaga/target/release/build/mpi-sys-446f4aea566dee3b/out
+  cargo:rustc-link-search=native=/usr/lib64/openmpi/lib
+  cargo:rustc-link-lib=mpi
+
+  --- stderr
+  /usr/include/openmpi-x86_64/mpi.h:233:10: fatal error: 'stddef.h' file not found
+
+  thread 'main' (2573691) panicked at /nfs/home/mannlk/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/mpi-sys-0.2.3/build.rs:74:10:
+  called `Result::unwrap()` on an `Err` value: ClangDiagnostic("/usr/include/openmpi-x86_64/mpi.h:233:10: fatal error: 'stddef.h' file not fo
+und\n")
+  stack backtrace:
+     0: __rustc::rust_begin_unwind
+     1: core::panicking::panic_fmt
+     2: core::result::unwrap_failed
+     3: build_script_build::main
+     4: core::ops::function::FnOnce::call_once
+  note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+(rust_build) [mannlk@login02 krABMaga]$ 

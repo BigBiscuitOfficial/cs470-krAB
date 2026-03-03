@@ -1,0 +1,15 @@
+/target
+**/*.rs.bk
+.criterion
+.idea
+*.profraw
+*.info
+Cargo.lock
+.vscode
+/bin
+/output
+.DS_Store
+
+# tarpaulin output
+cobertura.xml
+tarpaulin-report.html
