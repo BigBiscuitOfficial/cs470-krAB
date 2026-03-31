@@ -1,0 +1,1 @@
+{"rustc":5470738401306409665,"features":"[]","declared_features":"[\"default\", \"std\"]","target":16128944007793994169,"profile":2040997289075261528,"path":5940560699965984093,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/custom_derive-6ad673574781292a/dep-lib-custom_derive","checksum":false}}],"rustflags":[],"config":2069994364910194474,"compile_kind":0}
