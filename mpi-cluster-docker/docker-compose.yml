@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  master:
+    build: .
+    image: mpi-cluster-base
+    ports:
+      - "2222:22"
+    hostname: master
+    networks:
+      - mpi-net
+    command: ["/usr/sbin/sshd", "-D"]
+    volumes:
+      - ./workdir:/home/mpiuser/workdir # Shared directory if needed
+
+  worker1:
+    build: .
+    image: mpi-cluster-base
+    hostname: worker1
+    networks:
+      - mpi-net
+    command: ["/usr/sbin/sshd", "-D"]
+    volumes:
+      - ./workdir:/home/mpiuser/workdir
+
+  worker2:
+    build: .
+    image: mpi-cluster-base
+    hostname: worker2
+    networks:
+      - mpi-net
+    command: ["/usr/sbin/sshd", "-D"]
+    volumes:
+      - ./workdir:/home/mpiuser/workdir
+
+networks:
+  mpi-net:
+    driver: bridge
