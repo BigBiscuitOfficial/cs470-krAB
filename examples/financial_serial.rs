@@ -1,49 +1,46 @@
 mod financial_model;
 
 use financial_model::config::Config;
-use financial_model::report::write_single_run_artifacts;
-use financial_model::FinancialState;
-use krabmaga::engine::schedule::Schedule;
-use krabmaga::engine::state::State;
-use std::time::Instant;
+use financial_model::report::write_sweep_artifacts;
+use financial_model::runner::{run_headless, ExecutionMode};
+use financial_model::StrategyRunSummary;
 
 fn main() {
-    let config = Config::read_from("examples/config.json");
+    let config = Config::read_from("examples/config_comprehensive.json");
+    let summaries = run_headless(&config, ExecutionMode::Serial);
 
-    let mut state = FinancialState::new(
-        config.simulation.steps,
-        config.macro_economics.inflation_rate,
-        config.macro_economics.market_return,
-        config.macro_economics.job_loss_prob,
-        config.strategy_sweeps.savings_rates[0],
-        config.strategy_sweeps.risk_profiles[0],
-        config.strategy_sweeps.emergency_funds[0],
-    )
-    .with_run_context(
-        config.simulation.num_agents,
-        config.simulation.reps,
-        "serial",
-    );
+    // Convert to StrategyRunSummary for reporting
+    let runs: Vec<StrategyRunSummary> = summaries
+        .iter()
+        .map(StrategyRunSummary::from_financial_summary)
+        .collect();
 
-    let timer = Instant::now();
-    for _ in 0..config.simulation.reps {
-        let mut schedule = Schedule::new();
-        state.init(&mut schedule);
-        for _ in 0..config.simulation.steps {
-            schedule.step(state.as_state_mut());
-            if state.end_condition(&mut schedule) {
-                break;
-            }
-        }
-    }
-    let run_duration = timer.elapsed().as_secs_f32();
+    // Find best strategy (highest median net worth)
+    let best = runs
+        .iter()
+        .max_by(|a, b| {
+            a.median_net_worth
+                .partial_cmp(&b.median_net_worth)
+                .unwrap_or(std::cmp::Ordering::Equal)
+        })
+        .expect("No strategies ran");
 
-    state.finalize_timing(run_duration);
-    let summary = state.to_summary();
-    let artifacts = write_single_run_artifacts(&config, "serial", &summary);
+    let artifacts = write_sweep_artifacts(&config, "serial", &runs, best);
 
-    println!("Headless run artifacts:");
+    println!("\nHeadless run artifacts:");
     println!("- run dir: {}", artifacts.run_dir);
     println!("- report: {}", artifacts.report_html);
     println!("- summary: {}", artifacts.summary_json);
+    println!(
+        "- sweep results: {}",
+        artifacts
+            .sweep_results_csv
+            .unwrap_or_else(|| "N/A".to_string())
+    );
+    println!("\nBest strategy: {}", best.strategy_desc);
+    println!("  Median net worth: ${:.0}", best.median_net_worth);
+    println!(
+        "  P10-P90 range: ${:.0} - ${:.0}",
+        best.p10_net_worth, best.p90_net_worth
+    );
 }

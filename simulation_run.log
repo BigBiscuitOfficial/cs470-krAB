@@ -1,0 +1,204 @@
+   Compiling krabmaga v0.5.3 (/home/biscuit/cs470-krAB)
+warning: method `as_key` is never used
+  --> examples/financial_model/mod.rs:65:8
+   |
+64 | impl Gender {
+   | ----------- method in this implementation
+65 |     fn as_key(self) -> &'static str {
+   |        ^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: method `as_key` is never used
+   --> examples/financial_model/mod.rs:166:8
+    |
+165 | impl CareerAmbition {
+    | ------------------- method in this implementation
+166 |     fn as_key(self) -> &'static str {
+    |        ^^^^^^
+
+warning: multiple fields are never read
+   --> examples/financial_model/mod.rs:177:9
+    |
+176 | pub struct Person {
+    |            ------ fields in this struct
+177 |     pub id: u32,
+    |         ^^
+178 |     pub age: u32,
+179 |     pub starting_age: u32,
+    |         ^^^^^^^^^^^^
+...
+193 |     pub gender: Gender,
+    |         ^^^^^^
+194 |     pub race_ethnicity: RaceEthnicity,
+    |         ^^^^^^^^^^^^^^
+195 |     pub geographic_region: Region,
+    |         ^^^^^^^^^^^^^^^^^
+...
+201 |     pub financial_literacy_score: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+202 |     pub spending_discipline: f32,
+203 |     pub risk_tolerance: f32,
+    |         ^^^^^^^^^^^^^^
+204 |     pub career_ambition: CareerAmbition,
+    |         ^^^^^^^^^^^^^^^
+205 |     pub social_network_strength: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^
+206 |     pub family_financial_support: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+207 |     pub life_insurance_coverage: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `Person` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: method `liquid_wealth` is never used
+   --> examples/financial_model/mod.rs:256:12
+    |
+238 | impl Person {
+    | ----------- method in this implementation
+...
+256 |     pub fn liquid_wealth(&self) -> f32 {
+    |            ^^^^^^^^^^^^^
+
+warning: field `education_unemployment_multipliers` is never read
+  --> examples/financial_model/config.rs:39:9
+   |
+37 | pub struct Demographics {
+   |            ------------ field in this struct
+38 |     pub education_income_multipliers: HashMap<String, f32>,
+39 |     pub education_unemployment_multipliers: HashMap<String, f32>,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `Demographics` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `disability_onset_probability` and `disability_duration_years` are never read
+  --> examples/financial_model/config.rs:54:9
+   |
+48 | pub struct Healthcare {
+   |            ---------- fields in this struct
+...
+54 |     pub disability_onset_probability: f32,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |     pub disability_duration_years: f32,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `Healthcare` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+   --> examples/financial_model/config.rs:90:9
+    |
+ 75 | pub struct MacroEconomics {
+    |            -------------- fields in this struct
+...
+ 90 |     pub real_estate_appreciation: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+ 91 |     pub rent_growth_rate: f32,
+    |         ^^^^^^^^^^^^^^^^
+ 92 |     pub job_loss_prob: f32,
+    |         ^^^^^^^^^^^^^
+ 93 |     pub unemployment_duration_years: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 94 |     pub marriage_prob_per_year: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^
+ 95 |     pub child_prob_per_year: f32,
+    |         ^^^^^^^^^^^^^^^^^^^
+...
+101 |     pub divorce_prob_per_year: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `MacroEconomics` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `early_withdrawal_penalty` is never read
+   --> examples/financial_model/config.rs:140:9
+    |
+135 | pub struct TaxSystem {
+    |            --------- field in this struct
+...
+140 |     pub early_withdrawal_penalty: f32,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `TaxSystem` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `median_home_price` is never read
+   --> examples/financial_model/config.rs:146:9
+    |
+144 | pub struct Housing {
+    |            ------- field in this struct
+145 |     pub rent_as_pct_income: f32,
+146 |     pub median_home_price: f32,
+    |         ^^^^^^^^^^^^^^^^^
+    |
+    = note: `Housing` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `per_rank_debug` is never read
+   --> examples/financial_model/config.rs:263:9
+    |
+261 | pub struct OutputConfig {
+    |            ------------ field in this struct
+262 |     pub base_dir: Option<String>,
+263 |     pub per_rank_debug: Option<bool>,
+    |         ^^^^^^^^^^^^^^
+    |
+    = note: `OutputConfig` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: function `write_timeseries_csv` is never used
+  --> examples/financial_model/report.rs:67:4
+   |
+67 | fn write_timeseries_csv(path: &str, summary: &FinancialSummary) {
+   |    ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `write_single_run_artifacts` is never used
+   --> examples/financial_model/report.rs:488:8
+    |
+488 | pub fn write_single_run_artifacts(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: variant `Multithreaded` is never constructed
+  --> examples/financial_model/runner.rs:13:5
+   |
+11 | pub enum ExecutionMode {
+   |          ------------- variant in this enum
+12 |     Serial,
+13 |     Multithreaded,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `ExecutionMode` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: `krabmaga` (example "financial_serial") generated 13 warnings
+    Finished `release` profile [optimized] target(s) in 2.40s
+     Running `target/release/examples/financial_serial examples/config_comprehensive.json`
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+
+Headless run artifacts:
+- run dir: output/financial_serial_20260401_042933_330
+- report: output/financial_serial_20260401_042933_330/report.html
+- summary: output/financial_serial_20260401_042933_330/summary.json
+- sweep results: output/financial_serial_20260401_042933_330/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Aggressive, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11746320
+  P10-P90 range: $211103 - $79359072

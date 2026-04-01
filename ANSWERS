@@ -1,0 +1,120 @@
+Critical Clarifying Questions: Life Completion & Extreme Outcomes
+1. Mortality Modeling
+Q1a: Mortality realism level? Option C Socioeconomic
+
+Q1b: What happens financially when agent dies?
+- Estate value calculation for inheritance to next generation? Yes
+- Life insurance payouts to dependents? Base that on the factors with the agents level of success/responsibility.
+- Funeral costs (~$10K)? Roll some dice on realistic values based on national stats.
+- End simulation or continue with spouse/children? End simulation.
+
+---
+2. Extreme Negative Outcomes
+Q2a: Incarceration modeling?
+- Probability by demographics (unfortunately realistic - higher for certain groups)
+- Financial impact: lost income, legal costs ($50K-$200K), reentry challenges
+- Duration: short-term (months) vs long-term (years)
+- Post-release effects: reduced earning potential, employment gaps
+Q2b: Addiction/Mental Health Crises?
+- Substance abuse → lost job, medical costs, rehab expenses ($30K-$60K)
+- Mental health breakdown → disability, reduced work capacity
+- Recovery trajectories vs spirals
+Q2c: Homelessness/Destitution?
+- Trigger: bankruptcy + job loss + no social safety net
+- Once homeless: extremely difficult to recover (no address for job applications, etc.)
+- Should this be a "terminal state" or allow recovery paths?
+Q2d: Catastrophic Uninsured Events?
+- Major medical event without insurance → $200K-$1M debt
+- House fire without adequate coverage
+- Lawsuit/judgment against person → wage garnishment, asset seizure
+My assumption: Model incarceration and major health crises as low-probability high-impact events, homelessness as a recoverable state (with difficulty), catastrophic debt as a path to bankruptcy.
+
+yes, this is good.
+---
+3. Positive Extreme Outcomes
+For balance and realism:
+Q3a: Should we model "lottery winner" scenarios?
+- Entrepreneurial mega-success (1% chance your startup 10x's)
+- Inheritance windfalls larger than current range (receive $1M+)
+- Real estate windfalls (bought in area that gentrified 5x)
+- Stock picking luck (tech stock investment that 50x's)
+Q3b: Fame/high-achievement paths?
+- Professional athlete, entertainer, executive suite
+- Book deal, patent, intellectual property income
+- Political office (different income trajectory)
+My assumption: Include entrepreneurial success (high variance), large inheritances (rare), but not lottery/fame (too rare to model meaningfully at population level).
+Yes, this is good. 
+---
+4. Intergenerational Modeling
+Q4a: Do we model agent's children becoming adults?
+- Track children from birth → age 18 → launch into workforce?
+- Children inherit parents' socioeconomic status (education, wealth, networks)?
+- Simulate "what happens to my kids" based on my financial decisions?
+Q4b: Generational wealth transfer?
+- If agent dies, does estate go to children in simulation?
+- Model "dynasty" scenarios where family wealth compounds across generations?
+My assumption: Phase 1-5 focus on single-generation (agent's lifetime), Phase 6+ could add intergenerational tracking as advanced feature.
+
+Yes, just a bit though, but remember we want the agent to end at death as children cannot effect you once death happens. 
+---
+5. Ethical & Sensitivity Considerations
+Q5a: Demographic disparities - how explicit?
+The data shows real disparities (Black households have 1/8th the wealth of white households, pay gaps by race/gender exist). Should we:
+- Model realistically (show actual disparities to help users understand systemic challenges)
+- Model but contextualize (include educational notes about why disparities exist)
+- Make configurable (users can toggle "realistic mode" vs "idealized equal opportunity mode")
+Q5b: Negative outcomes and blame?
+When showing bankruptcy/incarceration outcomes, should the simulation:
+- Frame as systemic/bad luck vs personal choices?
+- Include explanatory text about circumstances vs decisions?
+- Show "escape paths" from negative states?
+My assumption: Model realistically but include context/education, make disparities visible to promote understanding, emphasize both structural factors and individual agency.
+Yes, good.
+---
+6. Simulation Termination Conditions
+Q6: When does a simulation end?
+- Agent death (natural causes, median age ~80)
+- Age cap (e.g., simulate max 100 years, even if agent lives longer)
+- Catastrophic bankruptcy (net worth < -$500K and no recovery path)
+- Incarceration with life sentence
+- Emigration (leave country, outside model scope)
+My assumption: End at death or age 100, but track "quality of outcome" - successful retirement vs destitution vs incarcerated vs deceased.
+Yes, good.
+---
+7. Strategy Personalization Questions
+Q7a: Starting profiles - how many templates?
+Should we provide pre-made profiles like:
+1. "Recent College Grad" (22, $50K income, $30K debt, single)
+2. "Mid-Career Professional" (35, $85K income, married, 1 child, $200K net worth)
+3. "Late Career Pre-Retirement" (55, $120K income, $600K saved, house paid off)
+4. "Young Family Struggle" (28, $45K income, 2 kids, $80K debt, renting)
+5. "Immigrant Starting Over" (30, $35K income, no savings, no debt, no family support)
+6. "Inheritance Recipient" (25, $60K income, just inherited $200K)
+7. "Divorced Single Parent" (42, $55K income, 2 kids, split assets, paying support)
+8. "High Earner" (32, $180K income, single, $400K saved, expensive lifestyle)
+How many templates? 5? 10? 20?
+Q7b: User customization depth?
+When user edits config for their personal situation:
+- Simple mode: 10 key inputs (age, income, savings, debt, family status)
+- Moderate mode: 25 inputs (add education, location, health, career trajectory)
+- Advanced mode: 50+ inputs (full control over all parameters)
+My assumption: Provide 8-10 diverse templates, support all three customization modes (simple form → generates comprehensive config).
+
+Yes, good.
+---
+8. Computational Budget & Realism Tradeoffs
+Q8: Realism vs runtime for personal mode?
+For a single user running on EPYC cluster:
+- Fast mode: 1 profile × 100 strategies × 10 reps × 45 years = ~45K person-years (~5 seconds)
+- Balanced mode: 1 profile × 500 strategies × 50 reps × 45 years = ~1.1M person-years (~1 minute)
+- Comprehensive mode: 1 profile × 2000 strategies × 200 reps × 45 years = ~18M person-years (~10 minutes)
+For research/cohort mode:
+- Fast: 1K agents × 10 strategies × 5 reps × 45 years = ~2.25M person-years (~30 seconds)
+- Balanced: 10K agents × 20 strategies × 10 reps × 45 years = ~90M person-years (~5 minutes)
+- Comprehensive: 100K agents × 50 strategies × 20 reps × 45 years = ~4.5B person-years (~several hours on cluster)
+What's your target runtime for interactive use?
+- Under 1 minute for quick feedback?
+- 5-10 minutes acceptable for comprehensive analysis?
+- Hours for research runs (batched, not interactive)?
+My assumption: Tiered modes - Fast for iteration (<1 min), Balanced for final decisions (5 min), Comprehensive for research (batch jobs).
+We want to emphasize the research, but have options for all due to the fact of this being a research project.

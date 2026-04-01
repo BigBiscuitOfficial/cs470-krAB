@@ -33,3 +33,19 @@ It uses `ubuntu:22.04` and OpenMPI, generating a shared SSH key at build time so
 ## Shared Workspace
 
 The `./workdir` directory on your host machine is mapped to `/home/mpiuser/workdir` inside all containers. You can compile your MPI code in the container and place the executable there, so all nodes can access it instantly.
+
+## Financial simulation artifacts (headless)
+
+For the financial examples, set `KRAB_OUTPUT_DIR` to a shared path so rank outputs and reports are persisted outside the container:
+
+```bash
+KRAB_OUTPUT_DIR=/home/mpiuser/workdir/output target/debug/examples/financial_mpi
+```
+
+If `per_rank_debug` is enabled in `examples/config.json`, each rank writes a small debug file under:
+
+```text
+<KRAB_OUTPUT_DIR>/mpi_rank_debug/rank_<rank>.txt
+```
+
+For serial and multithreaded runs from inside the cluster containers, use the same `KRAB_OUTPUT_DIR` setting so generated `summary.json`, `timeseries.csv`, `advice.txt`, and `report.html` are directly visible on the host under `mpi-cluster-docker/workdir/output`.

@@ -12,7 +12,8 @@
   "simulation": {
     "steps": 100,
     "num_agents": 1000,
-    "reps": 2
+    "reps": 2,
+    "thread_count": 4
   },
   "output": {
     "base_dir": "output",
