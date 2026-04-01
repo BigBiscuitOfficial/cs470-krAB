@@ -1,0 +1,4 @@
+run_id,mode,num_agents,num_steps,num_reps,num_threads,num_ranks,total_cores,init_time_s,step_compute_s,comm_overhead_s,metrics_calc_s,total_runtime_s,strategy_desc,hostname,timestamp
+invalid_001,serial,1000,100,5,2,2,4,0.123,12.456,0.000,0.234,12.813,baseline,node01,2026-04-01T10:00:00Z
+invalid_002,multithreaded,500,50,3,4,1,4,1.5,5.0,-0.5,0.8,6.0,negative_overhead,node02,2026-04-01T10:10:00Z
+invalid_003,serial,2000,200,5,1,1,1,2.0,8.0,0.0,1.0,10.0,time_mismatch,node03,2026-04-01T10:20:00Z

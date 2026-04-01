@@ -10,9 +10,8 @@ Cargo.lock
 /output
 .DS_Store
 **/BUILD_MPI
-.opencode/
 
-/docs
+
     
 # tarpaulin output
 cobertura.xml

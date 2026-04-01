@@ -1,4 +1,5 @@
 use super::config::{Config, RetirementGoal};
+use super::profiling::{PerformanceProfile, ProfileContext, TimingEvent};
 use super::{
     DebtStrategy, FinancialState, FinancialSummary, HousingStrategy, LifeStrategy, TimePoint,
 };
@@ -102,6 +103,14 @@ fn strategy_description(strategy: &LifeStrategy) -> String {
     };
 
     format!("{} | {} | {} | {}", housing, debt, alloc, retire)
+}
+
+pub fn generate_strategy_space(config: &Config) -> Vec<LifeStrategy> {
+    generate_strategies(config)
+}
+
+pub fn describe_strategy(strategy: &LifeStrategy) -> String {
+    strategy_description(strategy)
 }
 
 fn aggregate_timeseries(all_series: &[Vec<TimePoint>]) -> Vec<TimePoint> {
@@ -236,18 +245,21 @@ fn aggregate_summaries(mode: &str, summaries: &[FinancialSummary]) -> FinancialS
     }
 }
 
-pub fn run_single_strategy(
+fn run_single_strategy_profiled(
     config: &Config,
     strategy: &LifeStrategy,
+    strategy_index: Option<usize>,
+    strategy_desc: &str,
     mode: ExecutionMode,
+    mut profiler: Option<&mut PerformanceProfile>,
 ) -> FinancialSummary {
     let steps = config.simulation.steps.max(1);
     let reps = config.simulation.reps.max(1);
     let threads = configured_thread_count(config);
     let mut rep_summaries: Vec<FinancialSummary> = Vec::with_capacity(reps as usize);
-    let total_timer = Instant::now();
+    let strategy_timer = Instant::now();
 
-    for _rep in 0..reps {
+    for rep in 0..reps {
         let mut state = FinancialState::new(config.clone(), strategy.clone())
             .with_run_context(reps, mode.as_str());
 
@@ -266,14 +278,92 @@ pub fn run_single_strategy(
         }
 
         state.finalize_timing(timer.elapsed().as_secs_f32());
+
+        if let Some(profile) = profiler.as_deref_mut() {
+            let _ = rep;
+            profile.record(
+                TimingEvent::Init,
+                strategy_index,
+                strategy_desc,
+                state.init_time,
+                0.0,
+                0.0,
+                0.0,
+                state.init_time,
+            );
+            profile.record(
+                TimingEvent::StepCompute,
+                strategy_index,
+                strategy_desc,
+                0.0,
+                state.step_compute_time,
+                0.0,
+                0.0,
+                state.step_compute_time,
+            );
+            profile.record(
+                TimingEvent::MetricsCalc,
+                strategy_index,
+                strategy_desc,
+                0.0,
+                0.0,
+                0.0,
+                state.metrics_calc_time,
+                state.metrics_calc_time,
+            );
+            profile.record(
+                TimingEvent::RunDuration,
+                strategy_index,
+                strategy_desc,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                state.run_duration,
+            );
+            profile.record(
+                TimingEvent::CommunicationOverhead,
+                strategy_index,
+                strategy_desc,
+                0.0,
+                0.0,
+                state.communication_overhead,
+                0.0,
+                state.communication_overhead,
+            );
+        }
+
         rep_summaries.push(state.to_summary());
     }
 
     let mut aggregated = aggregate_summaries(mode.as_str(), &rep_summaries);
-    aggregated.run_duration = total_timer.elapsed().as_secs_f32();
+    aggregated.run_duration = strategy_timer.elapsed().as_secs_f32();
     let pure = aggregated.init_time + aggregated.step_compute_time + aggregated.metrics_calc_time;
     aggregated.communication_overhead = (aggregated.run_duration - pure).max(0.0);
+
+    if let Some(profile) = profiler {
+        profile.record(
+            TimingEvent::StrategyTotal,
+            strategy_index,
+            strategy_desc,
+            aggregated.init_time,
+            aggregated.step_compute_time,
+            aggregated.communication_overhead,
+            aggregated.metrics_calc_time,
+            aggregated.run_duration,
+        );
+    }
+
     aggregated
+}
+
+pub fn run_single_strategy(
+    config: &Config,
+    strategy: &LifeStrategy,
+    mode: ExecutionMode,
+) -> FinancialSummary {
+    let desc = strategy_description(strategy);
+    run_single_strategy_profiled(config, strategy, None, &desc, mode, None)
 }
 
 pub fn run_headless(config: &Config, mode: ExecutionMode) -> Vec<FinancialSummary> {
@@ -285,12 +375,49 @@ pub fn run_headless(config: &Config, mode: ExecutionMode) -> Vec<FinancialSummar
 
     println!("Running {} strategy combinations...", strategies.len());
 
+    let sweep_timer = Instant::now();
+    let num_threads = match mode {
+        ExecutionMode::Serial => 1,
+        ExecutionMode::Multithreaded => configured_thread_count(config),
+    };
+    let profile_context = ProfileContext::new(
+        mode.as_str(),
+        config.simulation.num_agents,
+        config.simulation.steps,
+        config.simulation.reps,
+        num_threads,
+    );
+    let mut profile = PerformanceProfile::new();
     let mut results = Vec::with_capacity(strategies.len());
     for (idx, strategy) in strategies.iter().enumerate() {
         let desc = strategy_description(strategy);
         println!("  [{}/{}] {}", idx + 1, strategies.len(), desc);
-        let summary = run_single_strategy(config, strategy, mode);
+        let summary = run_single_strategy_profiled(
+            config,
+            strategy,
+            Some(idx),
+            &desc,
+            mode,
+            Some(&mut profile),
+        );
         results.push(summary);
+    }
+
+    profile.record(
+        TimingEvent::SweepTotal,
+        None,
+        "all_strategies",
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        sweep_timer.elapsed().as_secs_f32(),
+    );
+
+    let profiling_base = format!("{}/profiling", config.output_base_dir());
+    match profile.export_csv_in_dir(&profiling_base, &profile_context) {
+        Ok(path) => println!("- profiling metrics: {}", path),
+        Err(err) => eprintln!("Warning: unable to write profiling CSV: {}", err),
     }
 
     results

@@ -2,6 +2,10 @@
 pub mod agent;
 pub mod config;
 pub mod demographics;
+#[cfg(feature = "distributed_mpi")]
+pub mod mpi_utils;
+pub mod partitioning;
+pub mod profiling;
 pub mod report;
 pub mod runner;
 pub mod state;

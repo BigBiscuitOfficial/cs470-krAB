@@ -1,0 +1,11 @@
+run_id,mode,num_agents,num_steps,num_reps,num_threads,num_ranks,total_cores,init_time_s,step_compute_s,comm_overhead_s,metrics_calc_s,total_runtime_s,strategy_desc,hostname,timestamp
+serial_001,serial,1000,100,5,1,1,1,0.123,12.456,0.000,0.234,12.813,baseline,node01,2026-04-01T10:00:00Z
+serial_002,serial,1000,100,5,1,1,1,0.119,12.398,0.000,0.241,12.758,baseline,node01,2026-04-01T10:05:00Z
+mt_001,multithreaded,1000,100,5,4,1,4,0.134,3.567,0.089,0.245,4.035,baseline,node01,2026-04-01T10:15:00Z
+mt_002,multithreaded,1000,100,5,8,1,8,0.145,1.923,0.167,0.251,2.486,baseline,node01,2026-04-01T10:20:00Z
+mt_003,multithreaded,1000,100,5,16,1,16,0.156,1.234,0.289,0.267,1.946,baseline,node01,2026-04-01T10:25:00Z
+mpi_001,mpi,1000,100,5,1,4,4,0.156,3.789,0.345,0.256,4.546,baseline,node02,2026-04-01T10:30:00Z
+mpi_002,mpi,1000,100,5,1,8,8,0.178,2.123,0.478,0.289,3.068,baseline,node02,2026-04-01T10:35:00Z
+hybrid_001,hybrid,1000,100,5,4,4,16,0.189,1.012,0.412,0.278,1.891,baseline,node03,2026-04-01T10:40:00Z
+serial_003,serial,10000,1000,3,1,1,1,1.234,124.567,0.000,2.345,128.146,large_problem,node01,2026-04-01T11:00:00Z
+mt_004,multithreaded,10000,1000,3,16,1,16,1.345,9.234,2.456,2.567,15.602,large_problem,node01,2026-04-01T11:15:00Z

@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     openssh-server \
     sudo \
     nano \
+    curl \
+    libclang-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Add a user called `mpiuser`
@@ -23,6 +25,8 @@ RUN mkdir /var/run/sshd && \
     sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 
 USER mpiuser
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/home/mpiuser/.cargo/bin:${PATH}"
 WORKDIR /home/mpiuser
 
 # Generate SSH key pair for passwordless SSH between containers.

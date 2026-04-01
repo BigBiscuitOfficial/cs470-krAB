@@ -34,18 +34,67 @@ It uses `ubuntu:22.04` and OpenMPI, generating a shared SSH key at build time so
 
 The `./workdir` directory on your host machine is mapped to `/home/mpiuser/workdir` inside all containers. You can compile your MPI code in the container and place the executable there, so all nodes can access it instantly.
 
-## Financial simulation artifacts (headless)
+## KrAB Financial Simulation (Serial, Multithreaded, MPI)
 
-For the financial examples, set `KRAB_OUTPUT_DIR` to a shared path so rank outputs and reports are persisted outside the container:
+### Quick Start for KrAB Examples
+
+**See full instructions in**: `docs/MPI_DOCKER_USAGE.md` (comprehensive guide with reproducible commands)
+
+### Quick Reference
+
+Inside the master container, compile and run:
 
 ```bash
-KRAB_OUTPUT_DIR=/home/mpiuser/workdir/output target/debug/examples/financial_mpi
+# Build all three modes
+cargo build --release --example financial_serial
+cargo build --release --example financial_multithreaded --features parallel
+cargo build --release --example financial_mpi --features distributed_mpi
+
+# Serial baseline
+./target/release/examples/financial_serial
+
+# Multithreaded (4 threads)
+KRAB_THREAD_COUNT=4 ./target/release/examples/financial_multithreaded
+
+# MPI smoke test (2 ranks)
+mpirun -np 2 ./target/release/examples/financial_mpi
 ```
 
-If `per_rank_debug` is enabled in `examples/config.json`, each rank writes a small debug file under:
+### Artifact Output
+
+For all modes, set `KRAB_OUTPUT_DIR` to persist results outside the container:
+
+```bash
+KRAB_OUTPUT_DIR=/home/mpiuser/workdir/output ./target/release/examples/financial_serial
+```
+
+Generated artifacts are visible on the host under:
+
+```text
+mpi-cluster-docker/workdir/output/
+├── summary.json           # Strategy results and metrics
+├── timeseries.csv         # Time-indexed wealth traces
+├── sweep_results.csv      # Per-strategy comparison
+├── report.html            # Interactive visualization
+└── profiling_*.csv        # Timing breakdown (init, compute, comm, metrics)
+```
+
+### Metrics & Profiling
+
+All three modes emit `profiling_*.csv` with consistent schema:
+
+- `mode`: serial | multithreaded | mpi
+- `event`: init | step_compute | metrics_calc | sweep_total | run_duration
+- `duration_seconds`: numeric timing for each phase
+
+Use for scaling analysis (strong/weak) and load balance studies.
+
+See `docs/METRICS_SCHEMA.md` for full schema specification and `docs/MPI_DESIGN.md` for distributed strategy sweep architecture.
+
+### Debugging
+
+If `per_rank_debug` is enabled in `examples/config.json`, each rank writes a debug file under:
 
 ```text
 <KRAB_OUTPUT_DIR>/mpi_rank_debug/rank_<rank>.txt
 ```
-
-For serial and multithreaded runs from inside the cluster containers, use the same `KRAB_OUTPUT_DIR` setting so generated `summary.json`, `timeseries.csv`, `advice.txt`, and `report.html` are directly visible on the host under `mpi-cluster-docker/workdir/output`.

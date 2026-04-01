@@ -1,4 +1,4 @@
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 /// Time-series snapshot of aggregate metrics at a specific simulation step
 #[derive(Debug, Clone, Serialize)]
@@ -53,7 +53,7 @@ pub struct FinancialSummary {
 }
 
 /// Condensed summary of a strategy run for comparison
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct StrategyRunSummary {
     pub strategy_desc: String,
     pub median_net_worth: f32,

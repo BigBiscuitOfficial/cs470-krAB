@@ -11,7 +11,7 @@ services:
       - mpi-net
     command: ["/usr/sbin/sshd", "-D"]
     volumes:
-      - ./workdir:/home/mpiuser/workdir # Shared directory if needed
+      - ..:/home/mpiuser/workdir # Map full project into workdir
 
   worker1:
     build: .
@@ -21,7 +21,7 @@ services:
       - mpi-net
     command: ["/usr/sbin/sshd", "-D"]
     volumes:
-      - ./workdir:/home/mpiuser/workdir
+      - ..:/home/mpiuser/workdir
 
   worker2:
     build: .
@@ -31,7 +31,7 @@ services:
       - mpi-net
     command: ["/usr/sbin/sshd", "-D"]
     volumes:
-      - ./workdir:/home/mpiuser/workdir
+      - ..:/home/mpiuser/workdir
 
 networks:
   mpi-net:

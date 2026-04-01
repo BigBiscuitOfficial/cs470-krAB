@@ -114,7 +114,7 @@
   },
   "simulation": {
     "steps": 45,
-    "num_agents": 1000,
+    "num_agents": 10000,
     "reps": 3,
     "thread_count": 4
   },
