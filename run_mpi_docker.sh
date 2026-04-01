@@ -2,13 +2,20 @@
 set -e
 
 KRAB_MPI_NP="${KRAB_MPI_NP:-2}"
+KRAB_MPI_REBUILD="${KRAB_MPI_REBUILD:-0}"
 
 # Navigate to the project root
 cd "$(dirname "$0")"
 
 echo "Building and starting Docker MPI cluster..."
 cd mpi-cluster-docker
-docker compose up -d --build
+if [ "$KRAB_MPI_REBUILD" = "1" ]; then
+  echo "Forcing Docker rebuild (KRAB_MPI_REBUILD=1)"
+  docker compose up -d --build
+else
+  echo "Reusing existing images/containers when available"
+  docker compose up -d
+fi
 
 echo "Compiling MPI program inside the master container..."
 docker compose exec -u mpiuser master bash -c "cd /home/mpiuser/workdir && cargo build --release --example financial_mpi --features distributed_mpi"
@@ -23,5 +30,5 @@ docker compose exec -u mpiuser \
 
 echo ""
 echo "Done! The cluster is still running in the background."
-echo "You can view the outputs in mpi-cluster-docker/workdir/output/mpi_run"
+echo "You can view the outputs in $KRAB_OUTPUT_DIR"
 echo "To stop the cluster, run: cd mpi-cluster-docker && docker compose down"

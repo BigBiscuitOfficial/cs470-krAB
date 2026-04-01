@@ -65,6 +65,28 @@ KRAB_MPI_NP=2 \
 ./run_mpi_docker.sh
 ```
 
+## MPI Scaling Sweep (Large Workloads)
+
+Use this when you need meaningful MPI scaling data where communication overhead is amortized.
+
+```bash
+KRAB_CONFIG_PATH=examples/config_comprehensive.json \
+KRAB_MPI_NP_VALUES=2,4 \
+KRAB_SWEEP_OUTPUT_ROOT=output/mpi_scale_sweep \
+./scripts/mpi_scale_sweep.sh
+```
+
+Outputs:
+- `output/mpi_scale_sweep/np*/` run artifacts
+- `output/mpi_scale_sweep/consolidated_metrics.csv`
+- `output/mpi_scale_sweep/mpi_sweep_timings.csv` (wall-clock by NP)
+- `output/mpi_scale_sweep/mpi_scaling.svg` (wall-clock scaling graph)
+- `output/mpi_scale_sweep/mpi_speedup_efficiency.svg` (observed vs ideal speedup and efficiency labels)
+- `output/mpi_scale_sweep/mpi_scaling_report.md` (shareable markdown summary with table + graphs)
+
+Note:
+- MPI profiling CSV location may vary by mode/config. The sweep script consolidates profiling when files are present and always records wall-clock timings by NP.
+
 ## When Agents Must Run Docker Tests
 
 - `distributed-dev`: any changes to MPI behavior, partitioning, gather/reduce, or `examples/financial_mpi.rs`
