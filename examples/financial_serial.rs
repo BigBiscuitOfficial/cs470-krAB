@@ -6,7 +6,9 @@ use financial_model::runner::{run_headless, ExecutionMode};
 use financial_model::StrategyRunSummary;
 
 fn main() {
-    let config = Config::read_from("examples/config_comprehensive.json");
+    let config_path = std::env::var("KRAB_CONFIG_PATH")
+        .unwrap_or_else(|_| "examples/config_comprehensive.json".to_string());
+    let config = Config::read_from(&config_path);
     let summaries = run_headless(&config, ExecutionMode::Serial);
 
     // Convert to StrategyRunSummary for reporting

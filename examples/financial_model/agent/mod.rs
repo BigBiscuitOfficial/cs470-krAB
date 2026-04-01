@@ -17,7 +17,7 @@ impl Agent for Person {
             .as_any()
             .downcast_ref::<FinancialState>()
             .expect("state downcast failed");
-        let mut rng = rand::rng();
+        let mut rng = state.rng.lock().expect("rng lock failed");
 
         self.age += 1;
 

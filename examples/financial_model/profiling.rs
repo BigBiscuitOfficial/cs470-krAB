@@ -38,6 +38,7 @@ pub struct ProfileContext {
     pub num_ranks: usize,
     pub hostname: String,
     pub timestamp: String,
+    pub seed: Option<u64>,
 }
 
 impl ProfileContext {
@@ -47,6 +48,7 @@ impl ProfileContext {
         num_steps: u32,
         num_reps: u32,
         num_threads: usize,
+        seed: Option<u64>,
     ) -> Self {
         let timestamp = Utc::now().to_rfc3339();
         let run_id = format!("{}_{}", mode, Utc::now().format("%Y%m%d_%H%M%S_%3f"));
@@ -62,6 +64,7 @@ impl ProfileContext {
             num_ranks: 1,
             hostname,
             timestamp,
+            seed,
         }
     }
 
@@ -117,9 +120,13 @@ impl PerformanceProfile {
         });
     }
 
+    pub fn merge_from(&mut self, mut other: PerformanceProfile) {
+        self.records.append(&mut other.records);
+    }
+
     pub fn to_csv(&self, context: &ProfileContext) -> String {
         let mut out = String::from(
-            "run_id,timestamp,mode,num_threads,num_ranks,total_cores,strategy_id,strategy_index,strategy_desc,event,num_agents,num_steps,num_reps,init_time_s,step_compute_s,comm_overhead_s,metrics_calc_s,total_runtime_s,hostname\n",
+            "run_id,timestamp,mode,num_threads,num_ranks,total_cores,seed,strategy_id,strategy_index,strategy_desc,event,num_agents,num_steps,num_reps,init_time_s,step_compute_s,comm_overhead_s,metrics_calc_s,total_runtime_s,hostname\n",
         );
 
         for record in &self.records {
@@ -131,16 +138,18 @@ impl PerformanceProfile {
                 .strategy_index
                 .map(|v| format!("strategy_{}", v))
                 .unwrap_or_else(|| "all_strategies".to_string());
+            let seed = context.seed.map(|v| v.to_string()).unwrap_or_default();
             let escaped_desc = record.strategy_desc.replace('"', "\"\"");
 
             out.push_str(&format!(
-                "{},{},{},{},{},{},{},{},\"{}\",{},{},{},{},{:.6},{:.6},{:.6},{:.6},{:.6},{}\n",
+                "{},{},{},{},{},{},{},{},{},\"{}\",{},{},{},{},{:.6},{:.6},{:.6},{:.6},{:.6},{}\n",
                 context.run_id,
                 context.timestamp,
                 context.mode,
                 context.num_threads,
                 context.num_ranks,
                 context.total_cores(),
+                seed,
                 strategy_id,
                 strategy_index,
                 escaped_desc,

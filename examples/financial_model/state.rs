@@ -6,7 +6,9 @@ use super::types::*;
 use super::utils::*;
 use krabmaga::engine::schedule::Schedule;
 use krabmaga::engine::state::State;
+use rand::rngs::StdRng;
 use rand::Rng;
+use rand::SeedableRng;
 use std::any::Any;
 use std::sync::Mutex;
 use std::time::Instant;
@@ -18,9 +20,11 @@ pub struct FinancialState {
     pub num_agents: u32,
     pub reps: u32,
     pub mode: String,
+    pub seed: Option<u64>,
     pub config: Config,
     pub current_strategy: LifeStrategy,
     pub final_persons: Mutex<Vec<Person>>,
+    pub rng: Mutex<StdRng>,
 
     // Computed metrics
     pub average_net_worth: f32,
@@ -52,6 +56,7 @@ impl FinancialState {
     pub fn new(config: Config, strategy: LifeStrategy) -> Self {
         let total_steps = config.simulation.steps;
         let num_agents = config.simulation.num_agents;
+        let seed = config.simulation.seed.unwrap_or_else(rand::random);
 
         Self {
             step: 0,
@@ -59,9 +64,11 @@ impl FinancialState {
             num_agents,
             reps: 1,
             mode: "run".to_string(),
+            seed: Some(seed),
             config,
             current_strategy: strategy,
             final_persons: Mutex::new(Vec::new()),
+            rng: Mutex::new(StdRng::seed_from_u64(seed)),
             average_net_worth: 0.0,
             median_net_worth: 0.0,
             p10_net_worth: 0.0,
@@ -272,6 +279,7 @@ impl FinancialState {
             steps: self.total_steps,
             num_agents: self.num_agents,
             reps: self.reps,
+            seed: self.seed,
             strategy_desc,
             average_net_worth: self.average_net_worth,
             median_net_worth: self.median_net_worth,
@@ -300,7 +308,7 @@ impl FinancialState {
 impl State for FinancialState {
     fn init(&mut self, schedule: &mut Schedule) {
         let start = Instant::now();
-        let mut rng = rand::rng();
+        let mut rng = self.rng.lock().expect("rng lock failed");
         self.final_persons.lock().expect("lock failed").clear();
         self.timeseries.clear();
         self.step = 0;

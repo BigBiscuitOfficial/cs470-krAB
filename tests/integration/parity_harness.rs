@@ -9,7 +9,6 @@
 /// - Serialization: JSON for human-readable golden references
 use serde::{Deserialize, Serialize};
 use std::fs;
-use std::path::Path;
 
 /// Floating-point comparison tolerances
 pub const FLOAT_ABSOLUTE_TOL: f32 = 1e-9;
@@ -65,6 +64,7 @@ impl StepSnapshot {
     }
 
     /// Detailed comparison with error reporting
+    #[allow(dead_code)]
     pub fn approx_eq_verbose(&self, other: &Self) -> Vec<String> {
         let mut errors = Vec::new();
 
@@ -152,12 +152,14 @@ impl ExecutionTrace {
     }
 
     /// Save trace to JSON fixture file
+    #[allow(dead_code)]
     pub fn save(&self, path: &str) -> std::io::Result<()> {
         let json = serde_json::to_string_pretty(&self).expect("Failed to serialize trace");
         fs::write(path, json)
     }
 
     /// Load trace from JSON fixture file
+    #[allow(dead_code)]
     pub fn load(path: &str) -> std::io::Result<Self> {
         let json = fs::read_to_string(path)?;
         serde_json::from_str(&json)
@@ -165,6 +167,7 @@ impl ExecutionTrace {
     }
 
     /// Detailed comparison with error reporting
+    #[allow(dead_code)]
     pub fn approx_eq_verbose(&self, other: &Self) -> Vec<String> {
         let mut errors = Vec::new();
 

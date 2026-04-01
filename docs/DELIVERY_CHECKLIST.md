@@ -8,6 +8,8 @@
 
 ## Pre-Demo Build Verification
 
+**Current status (2026-04-01):** See `docs/EOD_STATUS_2026-04-01.md` for latest validated performance numbers, parity status, and demo commands.
+
 ### Build All Examples (must pass)
 
 ```bash

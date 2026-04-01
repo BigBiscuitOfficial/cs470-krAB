@@ -9,9 +9,9 @@ use financial_model::partitioning::{contiguous_rank_workload, strategy_space_siz
 use financial_model::report::write_sweep_artifacts;
 #[cfg(feature = "distributed_mpi")]
 use financial_model::runner::{
-    describe_strategy, generate_strategy_space, run_single_strategy, ExecutionMode,
+    generate_strategy_space, run_single_strategy_with_index, ExecutionMode,
 };
-use financial_model::{FinancialState, StrategyRunSummary};
+use financial_model::StrategyRunSummary;
 
 #[cfg(feature = "distributed_mpi")]
 use mpi::traits::*;
@@ -32,7 +32,9 @@ fn main() {
     let world_size = world.size();
     let is_root = world.rank() == 0;
 
-    let config = Config::read_from("examples/config_comprehensive.json");
+    let config_path = std::env::var("KRAB_CONFIG_PATH")
+        .unwrap_or_else(|_| "examples/config_comprehensive.json".to_string());
+    let config = Config::read_from(&config_path);
     let strategies = generate_strategy_space(&config);
     let total_from_config = strategy_space_size(&config);
 
@@ -64,9 +66,8 @@ fn main() {
     let mut local_runs: Vec<StrategyRunSummary> = Vec::with_capacity(workload.len());
     for idx in workload.start..workload.end {
         let strategy = &strategies[idx];
-        let summary = run_single_strategy(&config, strategy, ExecutionMode::Serial);
-        let mut run = StrategyRunSummary::from_financial_summary(&summary);
-        run.strategy_desc = describe_strategy(strategy);
+        let summary = run_single_strategy_with_index(&config, strategy, idx, ExecutionMode::Serial);
+        let run = StrategyRunSummary::from_financial_summary(&summary);
         local_runs.push(run);
     }
 

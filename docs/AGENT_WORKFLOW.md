@@ -37,6 +37,14 @@ Use `architect` as the default entry point. It should decompose requests, delega
 4. `slurm-engineer` prepares job scripts
 5. `cluster-coordinator` updates deployment docs
 
+### MPI test execution requirements
+- For MPI-related code changes, `distributed-dev` and `quality-agent` must run Docker-backed MPI validation using:
+  - `RUN_MPI_DOCKER_TESTS=1 cargo test --test lib integration::mpi_smoke_test::mpi_smoke_via_docker_script -- --nocapture`
+- Run fast local checks before Docker:
+  - `cargo check --example financial_serial`
+  - `cargo check --example financial_multithreaded --features parallel`
+- Use `docs/AGENT_DOCKER_TEST_PLAYBOOK.md` as the canonical command reference.
+
 ### Scaling study flow
 1. `data-scientist` prepares configs/analysis templates
 2. `slurm-engineer` prepares strong/weak scaling scripts

@@ -14,8 +14,11 @@ pub mod types;
 mod utils;
 
 // Re-exports for public API
+#[allow(unused_imports)]
 pub use agent::Person;
+#[allow(unused_imports)]
 pub use config::{AssetAllocation, Config, RetirementGoal};
+#[allow(unused_imports)]
 pub use demographics::*;
 pub use state::FinancialState;
 pub use strategies::*;

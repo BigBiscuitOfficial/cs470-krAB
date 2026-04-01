@@ -263,6 +263,7 @@ pub struct Simulation {
     pub num_agents: u32,
     pub reps: u32,
     pub thread_count: Option<usize>,
+    pub seed: Option<u64>,
 }
 
 #[derive(Debug, Clone, Deserialize)]

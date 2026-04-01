@@ -8,6 +8,9 @@ use krabmaga::engine::state::State;
 use std::env;
 use std::time::Instant;
 
+#[cfg(feature = "parallel")]
+use rayon::prelude::*;
+
 #[derive(Copy, Clone)]
 pub enum ExecutionMode {
     Serial,
@@ -30,6 +33,12 @@ fn configured_thread_count(config: &Config) -> usize {
         }
     }
     config.simulation.thread_count.unwrap_or(1).max(1)
+}
+
+fn derive_run_seed(base_seed: u64, strategy_index: usize, rep: u32) -> u64 {
+    base_seed
+        .wrapping_add((strategy_index as u64).wrapping_mul(0x9E37_79B9_7F4A_7C15))
+        .wrapping_add((rep as u64).wrapping_mul(0xBF58_476D_1CE4_E5B9))
 }
 
 fn build_schedule(requested_threads: usize) -> Schedule {
@@ -221,6 +230,7 @@ fn aggregate_summaries(mode: &str, summaries: &[FinancialSummary]) -> FinancialS
         steps: first.steps,
         num_agents: first.num_agents,
         reps: first.reps,
+        seed: first.seed,
         strategy_desc: first.strategy_desc.clone(),
         average_net_worth: avg_nw / count,
         median_net_worth: med_nw / count,
@@ -260,7 +270,13 @@ fn run_single_strategy_profiled(
     let strategy_timer = Instant::now();
 
     for rep in 0..reps {
-        let mut state = FinancialState::new(config.clone(), strategy.clone())
+        let mut per_rep_config = config.clone();
+        if let Some(base_seed) = config.simulation.seed {
+            let idx = strategy_index.unwrap_or(0);
+            per_rep_config.simulation.seed = Some(derive_run_seed(base_seed, idx, rep));
+        }
+
+        let mut state = FinancialState::new(per_rep_config, strategy.clone())
             .with_run_context(reps, mode.as_str());
 
         let mut schedule = match mode {
@@ -366,6 +382,16 @@ pub fn run_single_strategy(
     run_single_strategy_profiled(config, strategy, None, &desc, mode, None)
 }
 
+pub fn run_single_strategy_with_index(
+    config: &Config,
+    strategy: &LifeStrategy,
+    strategy_index: usize,
+    mode: ExecutionMode,
+) -> FinancialSummary {
+    let desc = strategy_description(strategy);
+    run_single_strategy_profiled(config, strategy, Some(strategy_index), &desc, mode, None)
+}
+
 pub fn run_headless(config: &Config, mode: ExecutionMode) -> Vec<FinancialSummary> {
     let strategies = generate_strategies(config);
 
@@ -386,22 +412,85 @@ pub fn run_headless(config: &Config, mode: ExecutionMode) -> Vec<FinancialSummar
         config.simulation.steps,
         config.simulation.reps,
         num_threads,
+        config.simulation.seed,
     );
     let mut profile = PerformanceProfile::new();
-    let mut results = Vec::with_capacity(strategies.len());
-    for (idx, strategy) in strategies.iter().enumerate() {
-        let desc = strategy_description(strategy);
-        println!("  [{}/{}] {}", idx + 1, strategies.len(), desc);
-        let summary = run_single_strategy_profiled(
-            config,
-            strategy,
-            Some(idx),
-            &desc,
-            mode,
-            Some(&mut profile),
-        );
-        results.push(summary);
-    }
+    let results = match mode {
+        ExecutionMode::Serial => {
+            let mut serial_results = Vec::with_capacity(strategies.len());
+            for (idx, strategy) in strategies.iter().enumerate() {
+                let desc = strategy_description(strategy);
+                println!("  [{}/{}] {}", idx + 1, strategies.len(), desc);
+                let summary = run_single_strategy_profiled(
+                    config,
+                    strategy,
+                    Some(idx),
+                    &desc,
+                    mode,
+                    Some(&mut profile),
+                );
+                serial_results.push(summary);
+            }
+            serial_results
+        }
+        ExecutionMode::Multithreaded => {
+            #[cfg(feature = "parallel")]
+            {
+                let mut indexed_results: Vec<(usize, FinancialSummary, PerformanceProfile)> =
+                    strategies
+                        .par_iter()
+                        .enumerate()
+                        .map(|(idx, strategy)| {
+                            let desc = strategy_description(strategy);
+                            let mut local_profile = PerformanceProfile::new();
+                            let mut summary = run_single_strategy_profiled(
+                                config,
+                                strategy,
+                                Some(idx),
+                                &desc,
+                                ExecutionMode::Serial,
+                                Some(&mut local_profile),
+                            );
+                            summary.mode = ExecutionMode::Multithreaded.as_str().to_string();
+                            (idx, summary, local_profile)
+                        })
+                        .collect();
+
+                indexed_results.sort_by_key(|(idx, _, _)| *idx);
+
+                let mut mt_results = Vec::with_capacity(indexed_results.len());
+                for (idx, summary, local_profile) in indexed_results {
+                    println!(
+                        "  [{}/{}] {}",
+                        idx + 1,
+                        strategies.len(),
+                        strategy_description(&strategies[idx])
+                    );
+                    profile.merge_from(local_profile);
+                    mt_results.push(summary);
+                }
+                mt_results
+            }
+            #[cfg(not(feature = "parallel"))]
+            {
+                let mut fallback_results = Vec::with_capacity(strategies.len());
+                for (idx, strategy) in strategies.iter().enumerate() {
+                    let desc = strategy_description(strategy);
+                    println!("  [{}/{}] {}", idx + 1, strategies.len(), desc);
+                    let summary = run_single_strategy_profiled(
+                        config,
+                        strategy,
+                        Some(idx),
+                        &desc,
+                        mode,
+                        Some(&mut profile),
+                    );
+                    fallback_results.push(summary);
+                }
+                fallback_results
+            }
+        }
+    };
 
     profile.record(
         TimingEvent::SweepTotal,

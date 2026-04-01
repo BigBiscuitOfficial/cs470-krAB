@@ -1,0 +1,125 @@
+{
+  "macro_economics": {
+    "inflation_mean": 0.03,
+    "inflation_std_dev": 0.015,
+    "stock_return_mean": 0.09,
+    "stock_return_std_dev": 0.15,
+    "bond_return_mean": 0.04,
+    "bond_return_std_dev": 0.05,
+    "safe_withdrawal_rate": 0.04,
+    "real_estate_appreciation": 0.035,
+    "rent_growth_rate": 0.03,
+    "job_loss_prob": 0.04,
+    "unemployment_duration_years": 0.75,
+    "marriage_prob_per_year": 0.03,
+    "child_prob_per_year": 0.025,
+    "medical_emergency_prob": 0.015,
+    "child_annual_cost": 17000.0,
+    "emergency_cost_range": [5000.0, 50000.0],
+    "divorce_prob_per_year": 0.022,
+    "inheritance_prob_per_year": 0.008,
+    "inheritance_amount_range": [50000.0, 300000.0],
+    "promotion_prob_per_year": 0.15,
+    "promotion_raise_range": [0.08, 0.25],
+    "job_switch_prob_per_year": 0.12,
+    "job_switch_raise_range": [-0.05, 0.35],
+    "location_move_prob_per_year": 0.08,
+    "location_expense_multiplier_range": [0.70, 1.40]
+  },
+  "tax_system": {
+    "income_tax_brackets": [
+      {"threshold": 0.0, "rate": 0.10},
+      {"threshold": 50000.0, "rate": 0.22},
+      {"threshold": 150000.0, "rate": 0.32}
+    ],
+    "long_term_capital_gains_rate": 0.15,
+    "standard_deduction": 13850.0,
+    "k401_contribution_limit": 22500.0,
+    "k401_match_rate": 0.04,
+    "early_withdrawal_penalty": 0.10
+  },
+  "housing": {
+    "rent_as_pct_income": 0.28,
+    "median_home_price": 420000.0,
+    "down_payment_percent": 0.20,
+    "mortgage_interest_rate": 0.065,
+    "mortgage_years": 30,
+    "property_tax_rate": 0.012,
+    "maintenance_rate": 0.01,
+    "appreciation_rate": 0.038
+  },
+  "debt": {
+    "student_loan_balance_range": [10000.0, 80000.0],
+    "student_loan_rate": 0.055,
+    "auto_loan_balance_range": [6000.0, 42000.0],
+    "auto_loan_rate": 0.078,
+    "credit_card_rate": 0.18,
+    "credit_card_limit": 25000.0,
+    "student_loan_min_payment_rate": 0.06,
+    "student_loan_min_payment_floor": 1200.0,
+    "auto_loan_min_payment_rate": 0.09,
+    "auto_loan_min_payment_floor": 1800.0,
+    "credit_card_min_payment_rate": 0.03,
+    "credit_card_min_payment_floor": 300.0
+  },
+  "strategy_sweeps": {
+    "housing_strategies": ["Rent", "Buy"],
+    "debt_strategies": ["Minimum", "Aggressive"],
+    "asset_allocations": [
+      {"stocks": 0.80, "bonds": 0.20},
+      {"stocks": 1.00, "bonds": 0.00}
+    ],
+    "retirement_goals": [
+      {"type": "Age", "target": 65},
+      {"type": "FIRE", "expenses_multiple": 25.0}
+    ]
+  },
+  "life_events": {
+    "marriage_rate": 0.035,
+    "divorce_rate": 0.015,
+    "birth_rate": 0.056,
+    "disability_rate": 0.006,
+    "job_loss_rate": 0.04
+  },
+  "demographics": {
+    "education_income_multipliers": { "HighSchool": 1.0, "Associates": 1.25, "Bachelors": 1.67, "Masters": 1.95, "PhD": 2.10 },
+    "education_unemployment_multipliers": { "HighSchool": 1.5, "Associates": 1.2, "Bachelors": 0.8, "Masters": 0.6, "PhD": 0.5 },
+    "gender_pay_gap_female": 0.82,
+    "gender_pay_gap_nonbinary": 0.78,
+    "race_wealth_multipliers": { "White": 1.0, "Black": 0.15, "Hispanic": 0.20, "Asian": 1.2, "NativeAmerican": 0.10, "MultiRacial": 0.75 },
+    "regional_col_multipliers": { "Northeast": 1.15, "West": 1.30, "Midwest": 0.85, "South": 0.90, "Mountain": 0.95 },
+    "regional_income_multipliers": { "Northeast": 1.10, "West": 1.15, "Midwest": 0.95, "South": 0.92, "Mountain": 0.98 }
+  },
+  "healthcare": {
+    "monthly_premium_ranges": { "EmployerSponsored": [200.0, 600.0], "ACAMarketplace": [400.0, 1200.0], "Medicaid": [0.0, 50.0], "Medicare": [150.0, 400.0], "Uninsured": [0.0, 0.0] },
+    "annual_healthcare_base_cost": 2500.0,
+    "health_status_cost_multipliers": { "Excellent": 0.6, "Good": 1.0, "Fair": 1.8, "Poor": 3.0 },
+    "chronic_condition_annual_cost": 8000.0,
+    "chronic_condition_probability": 0.08,
+    "disability_onset_probability": 0.02,
+    "disability_duration_years": 2.0,
+    "disability_income_replacement": 0.60
+  },
+  "personality_traits": {
+    "financial_literacy_distribution": [50.0, 20.0, 0.0],
+    "spending_discipline_range": [0.70, 1.30],
+    "risk_tolerance_by_education": { "HighSchool": 0.35, "Associates": 0.40, "Bachelors": 0.50, "Masters": 0.60, "PhD": 0.65 },
+    "career_ambition_probabilities": [0.50, 0.35, 0.15]
+  },
+  "life_insurance": {
+    "coverage_by_income_multiple": 8.0,
+    "annual_premium_per_100k": 75.0,
+    "purchase_probability_by_education": { "HighSchool": 0.30, "Associates": 0.40, "Bachelors": 0.55, "Masters": 0.70, "PhD": 0.75 }
+  },
+  "simulation": {
+    "steps": 10,
+    "num_agents": 200,
+    "reps": 1,
+    "thread_count": 1,
+    "seed": 42
+  },
+  "output": {
+    "base_dir": "output",
+    "per_rank_debug": false
+  }
+}

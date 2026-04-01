@@ -48,6 +48,7 @@ pub struct FinancialSummary {
     pub metrics_calc_time: f32,
     pub run_duration: f32,
     pub communication_overhead: f32,
+    pub seed: Option<u64>,
 
     pub timeseries: Vec<TimePoint>,
 }

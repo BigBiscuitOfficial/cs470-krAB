@@ -1,8 +1,12 @@
 mod engine;
 mod explore;
+mod integration;
 #[cfg(test)]
 mod model;
 mod utils;
+
+#[path = "../examples/financial_model/mod.rs"]
+pub mod financial_model;
 
 #[test]
 fn simulate_ui_structs() {
