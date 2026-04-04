@@ -3,7 +3,7 @@
 ## First install rustup by running the following command and instructions listed
 
 ```bash
-curl -- proto ’= https ’ -- tlsv1 .2 - sSf https :// sh . rustup . rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ## Next export llvm path and clang args, either by including this in your .bashrc/.zshrc depending on your shell, or simply running it only for the current session.
