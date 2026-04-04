@@ -1,0 +1,9 @@
+{
+  "strategy_desc": "Housing: Buy, Debt: Aggressive, Stocks: 80%, Retirement: FIRE { expenses_multiple: 25.0 }",
+  "median_net_worth": 267023.75,
+  "p10_net_worth": 43550.766,
+  "p90_net_worth": 857303.4,
+  "bankruptcy_count": 3,
+  "successful_retirement_count": 4,
+  "seed": 42
+}

@@ -14,5 +14,8 @@ pub mod priority;
 ///File to define the Schedule structure for managing all the agents in the running simulation
 pub mod schedule;
 
+/// Utilities to run initialized states through the engine schedule loop.
+pub mod run;
+
 /// Module to define State methods
 pub mod state;

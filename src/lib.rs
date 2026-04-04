@@ -358,12 +358,12 @@ pub mod utils;
 
 #[doc(hidden)]
 pub use {
-    ::lazy_static::*,
     cfg_if, chrono,
     core::fmt,
     csv::{Reader, Writer},
     hashbrown,
     indicatif::ProgressBar,
+    lazy_static::*,
     rand, rand_pcg, rayon,
     rayon::prelude::*,
     std::collections::HashMap,
@@ -774,6 +774,9 @@ macro_rules! simulate {
         $(
             flag = $flag;
         )?
+        if cfg!(feature = "headless") {
+            flag = false;
+        }
         use std::time::Duration;
         use $crate::*;
         use $crate::engine::{schedule::*, state::*};
@@ -1159,10 +1162,77 @@ macro_rules! simulate {
             let mut s = $s;
             let mut state = s.as_state_mut();
             let n_step: u64 = $step;
+
+            let csv_recv: krabmaga::mpsc::Receiver<MessageType>;
+            let (sender, receiver)  = mpsc::channel();
+            {
+                let mut csv_send = CSV_SENDER.lock().expect("Error on lock");
+                *csv_send = Some(sender.clone());
+                csv_recv = receiver;
+            }
+
+            let csv_thread = thread::spawn(move || {
+                let open_files = |rep_counter: &u32| {
+                    let mut csv_writers: Vec<(String, Writer<File>)> = PLOT_NAMES.lock().unwrap().iter().map(|(name, x, y)| {
+                        let date = CURRENT_DATE.clone();
+                        let path = format!("output/{}/{}", date, name.replace("/", "-"));
+                        fs::create_dir_all(&path).expect("Can't create folder");
+                        let csv_name = format!("{}/{}_{}.csv", path, name.replace("/", "-"), rep_counter);
+                        let mut writer = Writer::from_path(csv_name).expect("error on open the file path");
+                        writer.write_record(&["series", &x, &y]).unwrap();
+                        (name.replace("/", "-"), writer)
+                    }).collect();
+                    csv_writers
+                };
+
+                let mut rep_counter = 0;
+                let mut csv_writers = match csv_recv.recv().expect("Error receiving init csv message") {
+                    MessageType::Quit => { return; },
+                    _ => open_files(&0)
+                };
+
+                loop {
+                    match csv_recv.recv(){
+                        Ok(message) => {
+                            match message {
+                                MessageType::Init => {
+                                    csv_writers = open_files(&rep_counter);
+                                },
+                                MessageType::Plot(name, series, x, y) => {
+                                    for (n, writer) in &mut csv_writers {
+                                        if name.replace("/", "-") == *n {
+                                            writer.write_record(&[&series, &x.to_string(), &y.to_string()]).unwrap();
+                                            writer.flush().unwrap();
+                                        }
+                                    }
+                                },
+                                MessageType::EndOfSimulation => {
+                                    rep_counter += 1;
+                                },
+                                _ => break,
+                            }
+                        },
+                        Err(_) => {}
+                    };
+                };
+            });
+
             //basic simulation without UI
             for r in 0..$reps {
+                {
+                    let mut logs = LOGS.lock().unwrap();
+                    logs.insert(0, Vec::new());
+                }
+                { DATA.lock().unwrap().clear(); }
+
                 let mut schedule: Schedule = Schedule::new();
                 state.init(&mut schedule);
+                {
+                    CSV_SENDER.lock().unwrap().as_ref().unwrap().send(MessageType::Init).expect("Error on communication with csv thread");
+                }
+
+                log!(LogType::Info, format!("#{} Simulation started", r), true);
+                let start = std::time::Instant::now();
                 //simulation loop
                 for i in 0..n_step {
                     schedule.step(state);
@@ -1170,7 +1240,46 @@ macro_rules! simulate {
                         break;
                     }
                 } //end simulation loop
+
+                let duration = start.elapsed();
+                log!(LogType::Info, format!("#{} Simulation ended in {}s", r, duration.as_secs_f64()), true);
+
+                {
+                    CSV_SENDER.lock().unwrap().as_ref().unwrap().send(MessageType::EndOfSimulation).expect("Error on communication with csv thread");
+                }
+
+                {
+                    let data = DATA.lock().unwrap();
+                    // iterate on data values and save to file
+                    for (key, plot) in data.iter() {
+                        if plot.to_be_stored {
+                            #[cfg(not(feature = "visualization_wasm"))]
+                            plot.store_plot(r as u64);
+                        }
+                    }
+                }
+
             } //end of repetitions
+
+            {
+                CSV_SENDER.lock().unwrap().as_ref().unwrap().send(MessageType::Quit).expect("Error on communication with csv thread");
+            }
+
+            csv_thread.join().expect("CSV thread panicked");
+
+            {
+                let mut logs = LOGS.lock().unwrap();
+                let date = CURRENT_DATE.clone();
+                fs::create_dir_all("output").expect("Can't create folder");
+                let log_path = format!("output/{}.log", date);
+                let mut f = File::create(log_path).expect("Can't create log file");
+                for log in logs.iter().flatten() {
+                    if log.to_be_stored {
+                        write!(f, "{}\n", log).expect("Can't write to log file");
+                    }
+                }
+            }
+
             println!("Simulation finished!");
         } //enf if/else flag
 
@@ -1577,6 +1686,44 @@ macro_rules! simulate_old {
                 }
             }
         }
+        results
+    }};
+}
+
+#[macro_export]
+/// Run simulations in headless mode with no terminal UI.
+///
+/// Uses engine run helpers to execute each repetition until `end_condition`
+/// or the provided step budget is exhausted.
+///
+/// Returns one [`RunStats`](crate::engine::run::RunStats) per repetition.
+///
+/// # Example
+/// ```ignore
+/// use krabmaga::*;
+/// // Assuming `MyState` implements `State`.
+/// let stats = simulate_headless!(MyState::new(), 50, 2);
+/// assert_eq!(stats.len(), 2);
+/// ```
+macro_rules! simulate_headless {
+    ($s:expr, $step:expr, $reps:expr) => {{
+        use $crate::engine::run::{run_initialized_state_bounded, RunStats};
+        use $crate::engine::schedule::Schedule;
+        use $crate::engine::state::State;
+
+        let mut s = $s;
+        let state = s.as_state_mut();
+        let n_step: u64 = $step;
+        let reps: u64 = $reps;
+        let mut results: Vec<RunStats> = Vec::with_capacity(reps as usize);
+
+        for _ in 0..reps {
+            let mut schedule: Schedule = Schedule::new();
+            state.init(&mut schedule);
+            let stats = run_initialized_state_bounded(state, &mut schedule, n_step);
+            results.push(stats);
+        }
+
         results
     }};
 }

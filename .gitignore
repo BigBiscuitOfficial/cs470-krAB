@@ -9,8 +9,10 @@ Cargo.lock
 /bin
 /output
 .DS_Store
-/BUILD_MPI
+**/BUILD_MPI
 
+
+    
 # tarpaulin output
 cobertura.xml
 tarpaulin-report.html

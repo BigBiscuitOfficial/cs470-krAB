@@ -77,6 +77,10 @@ cfg_if! {
         }
 
         impl Schedule {
+            // MT_OPT_BEGIN: adaptive-threshold
+            const MT_FAST_PATH_MIN_EVENTS: usize = 64;
+            // MT_OPT_END: adaptive-threshold
+
             pub fn new() -> Schedule {
                 Schedule {
                     step: 0,
@@ -125,99 +129,129 @@ cfg_if! {
             }
 
             pub fn step(&mut self, state: &mut dyn State) {
-
-                let thread_num = self.thread_num;
-                let thread_division = (self.events.lock().expect("error on lock").len() as f64 / thread_num as f64).ceil() as usize;
-                let mut state = Arc::new(Mutex::new(state));
-
                 if self.step == 0{
-                    Arc::get_mut(&mut state).expect("error on get_mut").lock().expect("error on lock").update(self.step.clone() as u64);
+                    state.update(self.step as u64);
                 }
 
-                Arc::get_mut(&mut state).expect("error on get_mut").lock().expect("error on lock").before_step(self);
+                state.before_step(self);
 
-                if self.events.lock().expect("error on lock").is_empty() {
-                    println!("No agent in the queue to schedule. Terminating.");
-                    //TODO check if we need to exit on 0 agents or we have to continue until new agents are spawned
-                    std::process::exit(0);
-                }
-
-                let mut cevents: Vec<Vec<Pair>> = vec![Vec::with_capacity(thread_division); thread_num];
-
-                match self.events.lock().expect("error on lock").peek() {
-                    Some(item) => {
-                        let (_agent, priority) = item;
-                        self.time = priority.time;
-                    },
-                    None => panic!("Agent not found - out loop")
-                }
-
-                let mut i = 0;
-                loop {
-                    if self.events.lock().expect("error on lock").is_empty() {
-                        break;
+                // MT_OPT_BEGIN: queue-drain-single-lock
+                let mut drained_events: Vec<Pair> = Vec::new();
+                {
+                    let mut queue = self.events.lock().expect("error on lock");
+                    if queue.is_empty() {
+                        println!("No agent in the queue to schedule. Terminating.");
+                        //TODO check if we need to exit on 0 agents or we have to continue until new agents are spawned
+                        std::process::exit(0);
                     }
 
-                    let item = self.events.lock().expect("error on lock").pop();
-                    match item {
+                    match queue.peek() {
                         Some(item) => {
-                            let (agent, priority) = item;
-                            let index = match thread_num{
-                                0 => 0,
-                                _ => i%thread_num
-                            };
-                            cevents[index].push(Pair::new(agent, priority));
-                            i+=1;
+                            let (_agent, priority) = item;
+                            self.time = priority.time;
                         },
-                        None => panic!("no item"),
+                        None => panic!("Agent not found - out loop")
+                    }
+
+                    drained_events.reserve(queue.len());
+                    while let Some((agent, priority)) = queue.pop() {
+                        drained_events.push(Pair::new(agent, priority));
                     }
                 }
+                // MT_OPT_END: queue-drain-single-lock
 
-                let _result = thread::scope( |scope| {
-                    for _tid in 0..thread_num {
-                        let events = Arc::clone(&self.events);
-                        let state = Arc::clone(&state);
+                let thread_num = self.thread_num.max(1);
 
-                        let mut batch = cevents.pop().expect("error on pop");
+                // MT_OPT_BEGIN: adaptive-fast-path
+                let use_parallel =
+                    thread_num > 1 && drained_events.len() >= Self::MT_FAST_PATH_MIN_EVENTS;
 
-                        scope.spawn(move |_| {
+                if !use_parallel {
+                    let mut rescheduled = Vec::new();
 
-                            for item in batch.iter_mut(){
-                                // take the lock from the state
-                                let mut state = state.lock().expect("error on lock");
-                                let state = state.as_state_mut();
+                    for mut item in drained_events.into_iter() {
+                        item.agentimpl.agent.before_step(state);
+                        item.agentimpl.agent.step(state);
+                        item.agentimpl.agent.after_step(state);
 
-                                // compute the agent
-                                item.agentimpl.agent.before_step(state);
-                                item.agentimpl.agent.step(state);
-                                item.agentimpl.agent.after_step(state);
-
-                                // after computation check if repeating and not stopped
-                                if item.agentimpl.repeating && !item.agentimpl.agent.is_stopped(state) {
-                                    // take the lock from the queue
-                                    let mut q = events.lock().expect("error on lock");
-                                    // schedule_once transposition
-                                    q.push(
-                                        item.agentimpl.clone(),
-                                        Priority {
-                                            time: item.priority.time + 1.0,
-                                            ordering: item.priority.ordering,
-                                        },
-                                    );
-
-                                    // continue on the next item
-                                    continue;
-                                }
-                            }
-                        });
+                        if item.agentimpl.repeating && !item.agentimpl.agent.is_stopped(state) {
+                            rescheduled.push((
+                                item.agentimpl,
+                                Priority {
+                                    time: item.priority.time + 1.0,
+                                    ordering: item.priority.ordering,
+                                },
+                            ));
+                        }
                     }
-                });
 
-                Arc::get_mut(&mut state).expect("error on get_mut")
-                    .lock().expect("error on lock").after_step(self);
+                    if !rescheduled.is_empty() {
+                        let mut queue = self.events.lock().expect("error on lock");
+                        for (agent, priority) in rescheduled.into_iter() {
+                            queue.push(agent, priority);
+                        }
+                    }
+                } else {
+                    // MT_OPT_END: adaptive-fast-path
+                    // MT_OPT_BEGIN: batched-reschedule-locks
+                    let mut cevents: Vec<Vec<Pair>> = (0..thread_num).map(|_| Vec::new()).collect();
+                    for (i, item) in drained_events.into_iter().enumerate() {
+                        cevents[i % thread_num].push(item);
+                    }
+
+                    let state = Arc::new(Mutex::new(state));
+                    let _result = thread::scope( |scope| {
+                        for mut batch in cevents.into_iter() {
+                            if batch.is_empty() {
+                                continue;
+                            }
+
+                            let events = Arc::clone(&self.events);
+                            let state = Arc::clone(&state);
+
+                            scope.spawn(move |_| {
+                                let mut rescheduled = Vec::new();
+
+                                for mut item in batch.drain(..){
+                                    let mut state = state.lock().expect("error on lock");
+                                    let state = state.as_state_mut();
+
+                                    item.agentimpl.agent.before_step(state);
+                                    item.agentimpl.agent.step(state);
+                                    item.agentimpl.agent.after_step(state);
+
+                                    if item.agentimpl.repeating && !item.agentimpl.agent.is_stopped(state) {
+                                        rescheduled.push((
+                                            item.agentimpl,
+                                            Priority {
+                                                time: item.priority.time + 1.0,
+                                                ordering: item.priority.ordering,
+                                            },
+                                        ));
+                                    }
+                                }
+
+                                if !rescheduled.is_empty() {
+                                    let mut q = events.lock().expect("error on lock");
+                                    for (agent, priority) in rescheduled.into_iter() {
+                                        q.push(agent, priority);
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    let mut state_guard = state.lock().expect("error on lock");
+                    state_guard.as_state_mut().after_step(self);
+                    self.step += 1;
+                    state_guard.as_state_mut().update(self.step as u64);
+                    return;
+                    // MT_OPT_END: batched-reschedule-locks
+                }
+
+                state.after_step(self);
                 self.step += 1;
-                Arc::get_mut(&mut state).expect("error on get_mut")
-                    .lock().expect("error on lock").update(self.step.clone() as u64);
+                state.update(self.step as u64);
             }
         }
     }

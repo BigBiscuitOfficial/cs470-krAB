@@ -44,8 +44,8 @@ clap= {version = "2.34.0", optional = true}
 
 # Model exploration AWS features
 lambda_runtime = {version = "0.4", optional = true}
-serde = { version = "1.0.137", features = ["derive"], optional = true}
-serde_json = {version = "1.0.81", optional = true}
+serde = { version = "1.0.137", features = ["derive"] }
+serde_json = {version = "1.0.81"}
 tokio = { version = "1.18.1", features = ["full"], optional = true }
 aws-config = {version = "0.4", optional = true}
 aws-sdk-sqs = {version = "0.4", optional = true}
@@ -88,8 +88,6 @@ distributed_mpi = [
 ]
 aws = [
     "lambda_runtime",
-    "serde",
-    "serde_json",
     "tokio",
     "aws-config",
     "aws-sdk-sqs",
@@ -105,6 +103,8 @@ parallel = [
     "crossbeam",
     "clap",
 ]
+
+headless = []
 
 visualization = [
     "bevy_prototype_lyon",
@@ -135,3 +135,5 @@ features = ["bayesian"]
 
 [lib]
 doctest = false     
+
+

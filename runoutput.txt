@@ -1,0 +1,428 @@
+Project dir: /nfs/home/mannlk/finalProject/final-proj-bk
+Running serial, mt, mpi, mpi+mt scaling jobs in one allocation
+=== SERIAL BATCH ===
+config: /nfs/home/mannlk/finalProject/final-proj-bk/examples/config_comprehensive.json
+binary: /nfs/home/mannlk/finalProject/final-proj-bk/binaries/financial_serial
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+- profiling metrics: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_serial/profiling/profiling_serial_10000agents_45steps_1cores_20260403_024341_903.csv
+
+Headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_serial/financial_serial_20260403_024341_905
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_serial/financial_serial_20260403_024341_905/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_serial/financial_serial_20260403_024341_905/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_serial/financial_serial_20260403_024341_905/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+profiling: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_serial/profiling/profiling_serial_10000agents_45steps_1cores_20260403_024341_903.csv
+sweep_total_s=13.423388
+strategy_total_sum_s=13.423037
+done: serial
+=== MT BATCH ===
+config: /nfs/home/mannlk/finalProject/final-proj-bk/examples/config_comprehensive.json
+binary: /nfs/home/mannlk/finalProject/final-proj-bk/binaries/financial_multithreaded
+---- threads=1 ----
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+- profiling metrics: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t1/profiling/profiling_multithreaded_10000agents_45steps_1cores_20260403_024355_175.csv
+
+Headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t1/financial_multithreaded_20260403_024355_177
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t1/financial_multithreaded_20260403_024355_177/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t1/financial_multithreaded_20260403_024355_177/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t1/financial_multithreaded_20260403_024355_177/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+profiling: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t1/profiling/profiling_multithreaded_10000agents_45steps_1cores_20260403_024355_175.csv
+threads=1 sweep_total_s=13.202423
+threads=1 strategy_total_sum_s=13.201954
+---- threads=2 ----
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+- profiling metrics: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t2/profiling/profiling_multithreaded_10000agents_45steps_2cores_20260403_024414_752.csv
+
+Headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t2/financial_multithreaded_20260403_024414_755
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t2/financial_multithreaded_20260403_024414_755/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t2/financial_multithreaded_20260403_024414_755/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t2/financial_multithreaded_20260403_024414_755/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11313512
+  P10-P90 range: $282364 - $77346312
+profiling: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t2/profiling/profiling_multithreaded_10000agents_45steps_2cores_20260403_024414_752.csv
+threads=2 sweep_total_s=19.514057
+threads=2 strategy_total_sum_s=38.588308
+---- threads=4 ----
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+- profiling metrics: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t4/profiling/profiling_multithreaded_10000agents_45steps_4cores_20260403_024428_920.csv
+
+Headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t4/financial_multithreaded_20260403_024428_922
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t4/financial_multithreaded_20260403_024428_922/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t4/financial_multithreaded_20260403_024428_922/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t4/financial_multithreaded_20260403_024428_922/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11195320
+  P10-P90 range: $299280 - $77896288
+profiling: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t4/profiling/profiling_multithreaded_10000agents_45steps_4cores_20260403_024428_920.csv
+threads=4 sweep_total_s=14.100768
+threads=4 strategy_total_sum_s=52.985888
+---- threads=8 ----
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+- profiling metrics: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t8/profiling/profiling_multithreaded_10000agents_45steps_8cores_20260403_024437_321.csv
+
+Headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t8/financial_multithreaded_20260403_024437_323
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t8/financial_multithreaded_20260403_024437_323/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t8/financial_multithreaded_20260403_024437_323/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t8/financial_multithreaded_20260403_024437_323/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11143979
+  P10-P90 range: $297855 - $76150840
+profiling: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t8/profiling/profiling_multithreaded_10000agents_45steps_8cores_20260403_024437_321.csv
+threads=8 sweep_total_s=8.324837
+threads=8 strategy_total_sum_s=66.170279
+---- threads=16 ----
+Running 24 strategy combinations...
+  [1/24] Rent | MinDebt | 80%stocks/20%bonds | Age65
+  [2/24] Rent | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [3/24] Rent | MinDebt | 60%stocks/40%bonds | Age65
+  [4/24] Rent | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [5/24] Rent | MinDebt | 100%stocks/0%bonds | Age65
+  [6/24] Rent | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [7/24] Rent | AggDebt | 80%stocks/20%bonds | Age65
+  [8/24] Rent | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [9/24] Rent | AggDebt | 60%stocks/40%bonds | Age65
+  [10/24] Rent | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [11/24] Rent | AggDebt | 100%stocks/0%bonds | Age65
+  [12/24] Rent | AggDebt | 100%stocks/0%bonds | FIRE25x
+  [13/24] Buy | MinDebt | 80%stocks/20%bonds | Age65
+  [14/24] Buy | MinDebt | 80%stocks/20%bonds | FIRE25x
+  [15/24] Buy | MinDebt | 60%stocks/40%bonds | Age65
+  [16/24] Buy | MinDebt | 60%stocks/40%bonds | FIRE25x
+  [17/24] Buy | MinDebt | 100%stocks/0%bonds | Age65
+  [18/24] Buy | MinDebt | 100%stocks/0%bonds | FIRE25x
+  [19/24] Buy | AggDebt | 80%stocks/20%bonds | Age65
+  [20/24] Buy | AggDebt | 80%stocks/20%bonds | FIRE25x
+  [21/24] Buy | AggDebt | 60%stocks/40%bonds | Age65
+  [22/24] Buy | AggDebt | 60%stocks/40%bonds | FIRE25x
+  [23/24] Buy | AggDebt | 100%stocks/0%bonds | Age65
+  [24/24] Buy | AggDebt | 100%stocks/0%bonds | FIRE25x
+- profiling metrics: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t16/profiling/profiling_multithreaded_10000agents_45steps_16cores_20260403_024446_998.csv
+
+Headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t16/financial_multithreaded_20260403_024447_000
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t16/financial_multithreaded_20260403_024447_000/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t16/financial_multithreaded_20260403_024447_000/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t16/financial_multithreaded_20260403_024447_000/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11247753
+  P10-P90 range: $257928 - $77473160
+profiling: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mt/t16/profiling/profiling_multithreaded_10000agents_45steps_16cores_20260403_024446_998.csv
+threads=16 sweep_total_s=9.591750
+threads=16 strategy_total_sum_s=126.843045
+done: mt
+=== MPI BATCH ===
+config: /nfs/home/mannlk/finalProject/final-proj-bk/examples/config_comprehensive.json
+binary: /nfs/home/mannlk/finalProject/final-proj-bk/binaries/financial_mpi
+---- ranks=1 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n1/financial_mpi_20260403_024500_718
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n1/financial_mpi_20260403_024500_718/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n1/financial_mpi_20260403_024500_718/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n1/financial_mpi_20260403_024500_718/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+---- ranks=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n2/financial_mpi_20260403_024508_803
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n2/financial_mpi_20260403_024508_803/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n2/financial_mpi_20260403_024508_803/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n2/financial_mpi_20260403_024508_803/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+---- ranks=4 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n4/financial_mpi_20260403_024513_528
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n4/financial_mpi_20260403_024513_528/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n4/financial_mpi_20260403_024513_528/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n4/financial_mpi_20260403_024513_528/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+---- ranks=8 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n8/financial_mpi_20260403_024516_484
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n8/financial_mpi_20260403_024516_484/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n8/financial_mpi_20260403_024516_484/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n8/financial_mpi_20260403_024516_484/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+---- ranks=16 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n16/financial_mpi_20260403_024518_464
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n16/financial_mpi_20260403_024518_464/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n16/financial_mpi_20260403_024518_464/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n16/financial_mpi_20260403_024518_464/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+---- ranks=32 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n32/financial_mpi_20260403_024519_738
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n32/financial_mpi_20260403_024519_738/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n32/financial_mpi_20260403_024519_738/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n32/financial_mpi_20260403_024519_738/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+---- ranks=64 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n64/financial_mpi_20260403_024522_243
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n64/financial_mpi_20260403_024522_243/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n64/financial_mpi_20260403_024522_243/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi/n64/financial_mpi_20260403_024522_243/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11272109
+  P10-P90 range: $305280 - $78145976
+  Global best score (all-reduced): 3480349.50
+done: mpi
+=== MPI+MT BATCH ===
+config: /nfs/home/mannlk/finalProject/final-proj-bk/examples/config_comprehensive.json
+threads per rank: 2
+binary: /nfs/home/mannlk/finalProject/final-proj-bk/binaries/financial_mpi_parallel
+---- ranks=1 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n1_t2/financial_mpi_parallel_20260403_024558_026
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n1_t2/financial_mpi_parallel_20260403_024558_026/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n1_t2/financial_mpi_parallel_20260403_024558_026/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n1_t2/financial_mpi_parallel_20260403_024558_026/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11341531
+  P10-P90 range: $275255 - $77198184
+  Global best score (all-reduced): 3641318.00
+---- ranks=2 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n2_t2/financial_mpi_parallel_20260403_024616_618
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n2_t2/financial_mpi_parallel_20260403_024616_618/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n2_t2/financial_mpi_parallel_20260403_024616_618/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n2_t2/financial_mpi_parallel_20260403_024616_618/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11265484
+  P10-P90 range: $271673 - $77002400
+  Global best score (all-reduced): 3584441.00
+---- ranks=4 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n4_t2/financial_mpi_parallel_20260403_024628_682
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n4_t2/financial_mpi_parallel_20260403_024628_682/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n4_t2/financial_mpi_parallel_20260403_024628_682/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n4_t2/financial_mpi_parallel_20260403_024628_682/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11220572
+  P10-P90 range: $278642 - $77622024
+  Global best score (all-reduced): 3478433.50
+---- ranks=8 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n8_t2/financial_mpi_parallel_20260403_024635_088
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n8_t2/financial_mpi_parallel_20260403_024635_088/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n8_t2/financial_mpi_parallel_20260403_024635_088/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n8_t2/financial_mpi_parallel_20260403_024635_088/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Aggressive, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $10882200
+  P10-P90 range: $220747 - $74258984
+  Global best score (all-reduced): 3469766.00
+---- ranks=16 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n16_t2/financial_mpi_parallel_20260403_024639_799
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n16_t2/financial_mpi_parallel_20260403_024639_799/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n16_t2/financial_mpi_parallel_20260403_024639_799/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n16_t2/financial_mpi_parallel_20260403_024639_799/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11298136
+  P10-P90 range: $254870 - $77311320
+  Global best score (all-reduced): 3584481.00
+---- ranks=32 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n32_t2/financial_mpi_parallel_20260403_024642_652
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n32_t2/financial_mpi_parallel_20260403_024642_652/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n32_t2/financial_mpi_parallel_20260403_024642_652/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n32_t2/financial_mpi_parallel_20260403_024642_652/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11251807
+  P10-P90 range: $273989 - $76954728
+  Global best score (all-reduced): 3575873.50
+---- ranks=64 threads=2 ----
+
+MPI headless run artifacts:
+- run dir: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n64_t2/financial_mpi_parallel_20260403_024646_446
+- report: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n64_t2/financial_mpi_parallel_20260403_024646_446/report.html
+- summary: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n64_t2/financial_mpi_parallel_20260403_024646_446/summary.json
+- sweep results: /nfs/home/mannlk/finalProject/final-proj-bk/output/slurm_mpi_mt/n64_t2/financial_mpi_parallel_20260403_024646_446/sweep_results.csv
+
+Best strategy: Housing: Buy, Debt: Minimum, Stocks: 100%, Retirement: Age { target: 65 }
+  Median net worth: $11450239
+  P10-P90 range: $300540 - $78895776
+  Global best score (all-reduced): 3583025.50
+done: mpi+mt
+All scaling scripts completed.
+
