@@ -17,4 +17,4 @@ export BINDGEN_EXTRA_CLANG_ARGS="-I/usr/lib/gcc/x86_64-redhat-linux/8/include"
 ./build-and-run.sh
 ```
 
-## Further helper scripts to be implemented. They will further show the data calculated by the engine and increased efficiency.
+## Further helper scripts to be implemented. They will showcase the data calculated by the engine and increased efficiency.
