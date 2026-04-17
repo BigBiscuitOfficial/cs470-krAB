@@ -1,0 +1,762 @@
+Scale config: households=48 horizon=60 individuals=2000 max_generation=150 repetitions=8
+Running distributed (MPI) GA exploration...
+Running Generation 1...
+*** Completed generation 1 after 0.1314161 seconds ***
+- Best fitness in generation 1 is 9.115835
+-- Overall best fitness is found in generation 1 and is 9.115835
+[MPI_TIMING] gen=1 total_max=0.138041s total_avg=0.137417s compute_max=0.045435s compute_avg=0.038196s comm_max=0.112955s comm_avg=0.099201s root_ops=0.004697s overhead_ratio=0.852
+Running Generation 2...
+*** Completed generation 2 after 0.22256863 seconds ***
+- Best fitness in generation 2 is 8.898998
+-- Overall best fitness is found in generation 2 and is 8.898998
+[MPI_TIMING] gen=2 total_max=0.091090s total_avg=0.090782s compute_max=0.045481s compute_avg=0.038088s comm_max=0.066120s comm_avg=0.052676s root_ops=0.004459s overhead_ratio=0.775
+Running Generation 3...
+*** Completed generation 3 after 0.31313944 seconds ***
+- Best fitness in generation 3 is 9.089571
+-- Overall best fitness is found in generation 2 and is 8.898998
+[MPI_TIMING] gen=3 total_max=0.090572s total_avg=0.090522s compute_max=0.045460s compute_avg=0.037967s comm_max=0.065746s comm_avg=0.052536s root_ops=0.004440s overhead_ratio=0.775
+Running Generation 4...
+*** Completed generation 4 after 0.40314868 seconds ***
+- Best fitness in generation 4 is 9.089571
+-- Overall best fitness is found in generation 2 and is 8.898998
+[MPI_TIMING] gen=4 total_max=0.090073s total_avg=0.090022s compute_max=0.045453s compute_avg=0.038027s comm_max=0.065187s comm_avg=0.051976s root_ops=0.004472s overhead_ratio=0.773
+Running Generation 5...
+*** Completed generation 5 after 0.4931481 seconds ***
+- Best fitness in generation 5 is 9.075711
+-- Overall best fitness is found in generation 2 and is 8.898998
+[MPI_TIMING] gen=5 total_max=0.090375s total_avg=0.086260s compute_max=0.045399s compute_avg=0.037748s comm_max=0.061656s comm_avg=0.048492s root_ops=0.004494s overhead_ratio=0.732
+Running Generation 6...
+*** Completed generation 6 after 0.5835817 seconds ***
+- Best fitness in generation 6 is 8.842218
+-- Overall best fitness is found in generation 6 and is 8.842218
+[MPI_TIMING] gen=6 total_max=0.094647s total_avg=0.094128s compute_max=0.045572s compute_avg=0.037526s comm_max=0.069619s comm_avg=0.056582s root_ops=0.004554s overhead_ratio=0.784
+Running Generation 7...
+*** Completed generation 7 after 0.67624676 seconds ***
+- Best fitness in generation 7 is 9.023866
+-- Overall best fitness is found in generation 6 and is 8.842218
+[MPI_TIMING] gen=7 total_max=0.092858s total_avg=0.092785s compute_max=0.045821s compute_avg=0.036964s comm_max=0.067914s comm_avg=0.055799s root_ops=0.004637s overhead_ratio=0.781
+Running Generation 8...
+*** Completed generation 8 after 0.76732504 seconds ***
+- Best fitness in generation 8 is 8.891397
+-- Overall best fitness is found in generation 6 and is 8.842218
+[MPI_TIMING] gen=8 total_max=0.091124s total_avg=0.090928s compute_max=0.045742s compute_avg=0.036785s comm_max=0.066049s comm_avg=0.054121s root_ops=0.004559s overhead_ratio=0.775
+Running Generation 9...
+*** Completed generation 9 after 0.85834754 seconds ***
+- Best fitness in generation 9 is 8.851661
+-- Overall best fitness is found in generation 6 and is 8.842218
+[MPI_TIMING] gen=9 total_max=0.090992s total_avg=0.090880s compute_max=0.046076s compute_avg=0.036532s comm_max=0.065916s comm_avg=0.054326s root_ops=0.004532s overhead_ratio=0.774
+Running Generation 10...
+*** Completed generation 10 after 0.9491515 seconds ***
+- Best fitness in generation 10 is 8.7585335
+-- Overall best fitness is found in generation 10 and is 8.7585335
+[MPI_TIMING] gen=10 total_max=0.090774s total_avg=0.090703s compute_max=0.046110s compute_avg=0.036121s comm_max=0.065713s comm_avg=0.054563s root_ops=0.004474s overhead_ratio=0.773
+Running Generation 11...
+*** Completed generation 11 after 1.0397577 seconds ***
+- Best fitness in generation 11 is 8.630777
+-- Overall best fitness is found in generation 11 and is 8.630777
+[MPI_TIMING] gen=11 total_max=0.090638s total_avg=0.090606s compute_max=0.046103s compute_avg=0.036160s comm_max=0.065606s comm_avg=0.054427s root_ops=0.004488s overhead_ratio=0.773
+Running Generation 12...
+*** Completed generation 12 after 1.13076 seconds ***
+- Best fitness in generation 12 is 8.564676
+-- Overall best fitness is found in generation 12 and is 8.564676
+[MPI_TIMING] gen=12 total_max=0.091008s total_avg=0.090968s compute_max=0.045983s compute_avg=0.036073s comm_max=0.065935s comm_avg=0.054876s root_ops=0.004476s overhead_ratio=0.774
+Running Generation 13...
+*** Completed generation 13 after 1.2217902 seconds ***
+- Best fitness in generation 13 is 8.502594
+-- Overall best fitness is found in generation 13 and is 8.502594
+[MPI_TIMING] gen=13 total_max=0.091088s total_avg=0.091054s compute_max=0.046221s compute_avg=0.035974s comm_max=0.066032s comm_avg=0.055060s root_ops=0.004525s overhead_ratio=0.775
+Running Generation 14...
+*** Completed generation 14 after 1.3128573 seconds ***
+- Best fitness in generation 14 is 8.434348
+-- Overall best fitness is found in generation 14 and is 8.434348
+[MPI_TIMING] gen=14 total_max=0.091084s total_avg=0.091053s compute_max=0.046095s compute_avg=0.035797s comm_max=0.065948s comm_avg=0.055236s root_ops=0.004530s overhead_ratio=0.774
+Running Generation 15...
+*** Completed generation 15 after 1.403516 seconds ***
+- Best fitness in generation 15 is 8.399551
+-- Overall best fitness is found in generation 15 and is 8.399551
+[MPI_TIMING] gen=15 total_max=0.090660s total_avg=0.090634s compute_max=0.045925s compute_avg=0.035464s comm_max=0.065557s comm_avg=0.055151s root_ops=0.004544s overhead_ratio=0.773
+Running Generation 16...
+*** Completed generation 16 after 1.4945223 seconds ***
+- Best fitness in generation 16 is 8.34356
+-- Overall best fitness is found in generation 16 and is 8.34356
+[MPI_TIMING] gen=16 total_max=0.091006s total_avg=0.090933s compute_max=0.046135s compute_avg=0.034873s comm_max=0.065849s comm_avg=0.056040s root_ops=0.004484s overhead_ratio=0.773
+Running Generation 17...
+*** Completed generation 17 after 1.5855602 seconds ***
+- Best fitness in generation 17 is 8.241583
+-- Overall best fitness is found in generation 17 and is 8.241583
+[MPI_TIMING] gen=17 total_max=0.091025s total_avg=0.090971s compute_max=0.046044s compute_avg=0.034523s comm_max=0.065938s comm_avg=0.056429s root_ops=0.004450s overhead_ratio=0.773
+Running Generation 18...
+*** Completed generation 18 after 1.6764762 seconds ***
+- Best fitness in generation 18 is 8.236049
+-- Overall best fitness is found in generation 18 and is 8.236049
+[MPI_TIMING] gen=18 total_max=0.090960s total_avg=0.090933s compute_max=0.045994s compute_avg=0.034338s comm_max=0.065876s comm_avg=0.056576s root_ops=0.004456s overhead_ratio=0.773
+Running Generation 19...
+*** Completed generation 19 after 1.7675548 seconds ***
+- Best fitness in generation 19 is 8.236049
+-- Overall best fitness is found in generation 18 and is 8.236049
+[MPI_TIMING] gen=19 total_max=0.091043s total_avg=0.091000s compute_max=0.046109s compute_avg=0.034358s comm_max=0.065869s comm_avg=0.056623s root_ops=0.004434s overhead_ratio=0.772
+Running Generation 20...
+*** Completed generation 20 after 1.8586316 seconds ***
+- Best fitness in generation 20 is 8.150865
+-- Overall best fitness is found in generation 20 and is 8.150865
+[MPI_TIMING] gen=20 total_max=0.091078s total_avg=0.091033s compute_max=0.046119s compute_avg=0.034351s comm_max=0.065883s comm_avg=0.056664s root_ops=0.004407s overhead_ratio=0.772
+Running Generation 21...
+*** Completed generation 21 after 1.9494495 seconds ***
+- Best fitness in generation 21 is 8.148063
+-- Overall best fitness is found in generation 21 and is 8.148063
+[MPI_TIMING] gen=21 total_max=0.090839s total_avg=0.090813s compute_max=0.045954s compute_avg=0.034136s comm_max=0.065650s comm_avg=0.056658s root_ops=0.004418s overhead_ratio=0.771
+Running Generation 22...
+*** Completed generation 22 after 2.0405068 seconds ***
+- Best fitness in generation 22 is 8.132558
+-- Overall best fitness is found in generation 22 and is 8.132558
+[MPI_TIMING] gen=22 total_max=0.091117s total_avg=0.091086s compute_max=0.046026s compute_avg=0.034152s comm_max=0.065957s comm_avg=0.056915s root_ops=0.004495s overhead_ratio=0.773
+Running Generation 23...
+*** Completed generation 23 after 2.1314328 seconds ***
+- Best fitness in generation 23 is 8.111605
+-- Overall best fitness is found in generation 23 and is 8.111605
+[MPI_TIMING] gen=23 total_max=0.090989s total_avg=0.090961s compute_max=0.046010s compute_avg=0.034170s comm_max=0.065775s comm_avg=0.056772s root_ops=0.004537s overhead_ratio=0.773
+Running Generation 24...
+*** Completed generation 24 after 2.2224386 seconds ***
+- Best fitness in generation 24 is 8.0128975
+-- Overall best fitness is found in generation 24 and is 8.0128975
+[MPI_TIMING] gen=24 total_max=0.090979s total_avg=0.090882s compute_max=0.046025s compute_avg=0.034017s comm_max=0.065666s comm_avg=0.056846s root_ops=0.004455s overhead_ratio=0.771
+Running Generation 25...
+*** Completed generation 25 after 2.3136005 seconds ***
+- Best fitness in generation 25 is 8.0128975
+-- Overall best fitness is found in generation 24 and is 8.0128975
+[MPI_TIMING] gen=25 total_max=0.091195s total_avg=0.091166s compute_max=0.046222s compute_avg=0.033961s comm_max=0.065938s comm_avg=0.057186s root_ops=0.004487s overhead_ratio=0.772
+Running Generation 26...
+*** Completed generation 26 after 2.4047287 seconds ***
+- Best fitness in generation 26 is 7.994043
+-- Overall best fitness is found in generation 26 and is 7.994043
+[MPI_TIMING] gen=26 total_max=0.091128s total_avg=0.091069s compute_max=0.046107s compute_avg=0.033925s comm_max=0.065831s comm_avg=0.057125s root_ops=0.004438s overhead_ratio=0.771
+Running Generation 27...
+*** Completed generation 27 after 2.4958394 seconds ***
+- Best fitness in generation 27 is 7.994043
+-- Overall best fitness is found in generation 26 and is 7.994043
+[MPI_TIMING] gen=27 total_max=0.091229s total_avg=0.091197s compute_max=0.046080s compute_avg=0.033628s comm_max=0.065962s comm_avg=0.057550s root_ops=0.004550s overhead_ratio=0.773
+Running Generation 28...
+*** Completed generation 28 after 2.5870337 seconds ***
+- Best fitness in generation 28 is 7.994043
+-- Overall best fitness is found in generation 26 and is 7.994043
+[MPI_TIMING] gen=28 total_max=0.091161s total_avg=0.091093s compute_max=0.046113s compute_avg=0.033558s comm_max=0.065776s comm_avg=0.057516s root_ops=0.004493s overhead_ratio=0.771
+Running Generation 29...
+*** Completed generation 29 after 2.6786568 seconds ***
+- Best fitness in generation 29 is 7.9953346
+-- Overall best fitness is found in generation 26 and is 7.994043
+[MPI_TIMING] gen=29 total_max=0.091784s total_avg=0.091747s compute_max=0.046175s compute_avg=0.033563s comm_max=0.066537s comm_avg=0.058164s root_ops=0.004562s overhead_ratio=0.775
+Running Generation 30...
+*** Completed generation 30 after 2.7702465 seconds ***
+- Best fitness in generation 30 is 7.957825
+-- Overall best fitness is found in generation 30 and is 7.957825
+[MPI_TIMING] gen=30 total_max=0.091536s total_avg=0.091452s compute_max=0.046227s compute_avg=0.033576s comm_max=0.066223s comm_avg=0.057856s root_ops=0.004490s overhead_ratio=0.773
+Running Generation 31...
+*** Completed generation 31 after 2.8615084 seconds ***
+- Best fitness in generation 31 is 7.957825
+-- Overall best fitness is found in generation 30 and is 7.957825
+[MPI_TIMING] gen=31 total_max=0.091250s total_avg=0.091191s compute_max=0.046067s compute_avg=0.033565s comm_max=0.065919s comm_avg=0.057607s root_ops=0.004460s overhead_ratio=0.771
+Running Generation 32...
+*** Completed generation 32 after 2.952698 seconds ***
+- Best fitness in generation 32 is 7.957825
+-- Overall best fitness is found in generation 30 and is 7.957825
+[MPI_TIMING] gen=32 total_max=0.091249s total_avg=0.091220s compute_max=0.046160s compute_avg=0.033412s comm_max=0.065956s comm_avg=0.057789s root_ops=0.004506s overhead_ratio=0.772
+Running Generation 33...
+*** Completed generation 33 after 3.0441322 seconds ***
+- Best fitness in generation 33 is 7.954977
+-- Overall best fitness is found in generation 33 and is 7.954977
+[MPI_TIMING] gen=33 total_max=0.091442s total_avg=0.091414s compute_max=0.046236s compute_avg=0.033415s comm_max=0.066110s comm_avg=0.057980s root_ops=0.004493s overhead_ratio=0.772
+Running Generation 34...
+*** Completed generation 34 after 3.1353834 seconds ***
+- Best fitness in generation 34 is 7.946467
+-- Overall best fitness is found in generation 34 and is 7.946467
+[MPI_TIMING] gen=34 total_max=0.091237s total_avg=0.091208s compute_max=0.046058s compute_avg=0.033331s comm_max=0.065925s comm_avg=0.057857s root_ops=0.004491s overhead_ratio=0.772
+Running Generation 35...
+*** Completed generation 35 after 3.2264078 seconds ***
+- Best fitness in generation 35 is 7.946467
+-- Overall best fitness is found in generation 34 and is 7.946467
+[MPI_TIMING] gen=35 total_max=0.091023s total_avg=0.090985s compute_max=0.046116s compute_avg=0.033292s comm_max=0.065688s comm_avg=0.057674s root_ops=0.004471s overhead_ratio=0.771
+Running Generation 36...
+*** Completed generation 36 after 3.3177094 seconds ***
+- Best fitness in generation 36 is 7.946467
+-- Overall best fitness is found in generation 34 and is 7.946467
+[MPI_TIMING] gen=36 total_max=0.091319s total_avg=0.091278s compute_max=0.046323s compute_avg=0.033177s comm_max=0.066068s comm_avg=0.058082s root_ops=0.004449s overhead_ratio=0.772
+Running Generation 37...
+*** Completed generation 37 after 3.4089231 seconds ***
+- Best fitness in generation 37 is 7.941463
+-- Overall best fitness is found in generation 37 and is 7.941463
+[MPI_TIMING] gen=37 total_max=0.091231s total_avg=0.091203s compute_max=0.046085s compute_avg=0.033070s comm_max=0.065953s comm_avg=0.058114s root_ops=0.004486s overhead_ratio=0.772
+Running Generation 38...
+*** Completed generation 38 after 3.5000942 seconds ***
+- Best fitness in generation 38 is 7.941463
+-- Overall best fitness is found in generation 37 and is 7.941463
+[MPI_TIMING] gen=38 total_max=0.091158s total_avg=0.091113s compute_max=0.046087s compute_avg=0.033052s comm_max=0.065844s comm_avg=0.058042s root_ops=0.004459s overhead_ratio=0.771
+Running Generation 39...
+*** Completed generation 39 after 3.5913827 seconds ***
+- Best fitness in generation 39 is 7.941463
+-- Overall best fitness is found in generation 37 and is 7.941463
+[MPI_TIMING] gen=39 total_max=0.091330s total_avg=0.091304s compute_max=0.046101s compute_avg=0.032854s comm_max=0.066035s comm_avg=0.058431s root_ops=0.004478s overhead_ratio=0.772
+Running Generation 40...
+*** Completed generation 40 after 3.6824372 seconds ***
+- Best fitness in generation 40 is 7.9287863
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=40 total_max=0.091061s total_avg=0.091011s compute_max=0.045970s compute_avg=0.032830s comm_max=0.065730s comm_avg=0.058162s root_ops=0.004450s overhead_ratio=0.771
+Running Generation 41...
+*** Completed generation 41 after 3.7737179 seconds ***
+- Best fitness in generation 41 is 7.941277
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=41 total_max=0.091259s total_avg=0.091232s compute_max=0.046118s compute_avg=0.032837s comm_max=0.065953s comm_avg=0.058376s root_ops=0.004440s overhead_ratio=0.771
+Running Generation 42...
+*** Completed generation 42 after 3.8649158 seconds ***
+- Best fitness in generation 42 is 7.93708
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=42 total_max=0.091195s total_avg=0.091158s compute_max=0.046120s compute_avg=0.032842s comm_max=0.065875s comm_avg=0.058297s root_ops=0.004422s overhead_ratio=0.771
+Running Generation 43...
+*** Completed generation 43 after 3.9561365 seconds ***
+- Best fitness in generation 43 is 7.93708
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=43 total_max=0.091267s total_avg=0.091238s compute_max=0.046086s compute_avg=0.032826s comm_max=0.065983s comm_avg=0.058393s root_ops=0.004467s overhead_ratio=0.772
+Running Generation 44...
+*** Completed generation 44 after 4.0474186 seconds ***
+- Best fitness in generation 44 is 7.9381795
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=44 total_max=0.091279s total_avg=0.091225s compute_max=0.046143s compute_avg=0.032785s comm_max=0.065913s comm_avg=0.058421s root_ops=0.004428s overhead_ratio=0.771
+Running Generation 45...
+*** Completed generation 45 after 4.138442 seconds ***
+- Best fitness in generation 45 is 7.9369373
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=45 total_max=0.091114s total_avg=0.091082s compute_max=0.046049s compute_avg=0.032715s comm_max=0.065818s comm_avg=0.058349s root_ops=0.004499s overhead_ratio=0.772
+Running Generation 46...
+*** Completed generation 46 after 4.229683 seconds ***
+- Best fitness in generation 46 is 7.9323072
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=46 total_max=0.091252s total_avg=0.091227s compute_max=0.046204s compute_avg=0.032721s comm_max=0.065964s comm_avg=0.058487s root_ops=0.004505s overhead_ratio=0.772
+Running Generation 47...
+*** Completed generation 47 after 4.3208704 seconds ***
+- Best fitness in generation 47 is 7.9323072
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=47 total_max=0.091167s total_avg=0.091099s compute_max=0.045986s compute_avg=0.032711s comm_max=0.065824s comm_avg=0.058370s root_ops=0.004452s overhead_ratio=0.771
+Running Generation 48...
+*** Completed generation 48 after 4.412205 seconds ***
+- Best fitness in generation 48 is 7.9323072
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=48 total_max=0.091453s total_avg=0.091348s compute_max=0.046176s compute_avg=0.032538s comm_max=0.066050s comm_avg=0.058791s root_ops=0.004479s overhead_ratio=0.771
+Running Generation 49...
+*** Completed generation 49 after 4.5032816 seconds ***
+- Best fitness in generation 49 is 7.929064
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=49 total_max=0.091064s total_avg=0.091033s compute_max=0.046058s compute_avg=0.032472s comm_max=0.065770s comm_avg=0.058542s root_ops=0.004484s overhead_ratio=0.771
+Running Generation 50...
+*** Completed generation 50 after 4.5944576 seconds ***
+- Best fitness in generation 50 is 7.929064
+-- Overall best fitness is found in generation 40 and is 7.9287863
+[MPI_TIMING] gen=50 total_max=0.091202s total_avg=0.091173s compute_max=0.046181s compute_avg=0.032417s comm_max=0.065940s comm_avg=0.058736s root_ops=0.004501s overhead_ratio=0.772
+Running Generation 51...
+*** Completed generation 51 after 4.685676 seconds ***
+- Best fitness in generation 51 is 7.928559
+-- Overall best fitness is found in generation 51 and is 7.928559
+[MPI_TIMING] gen=51 total_max=0.091233s total_avg=0.091183s compute_max=0.046240s compute_avg=0.032343s comm_max=0.065925s comm_avg=0.058822s root_ops=0.004470s overhead_ratio=0.772
+Running Generation 52...
+*** Completed generation 52 after 4.7771225 seconds ***
+- Best fitness in generation 52 is 7.928559
+-- Overall best fitness is found in generation 51 and is 7.928559
+[MPI_TIMING] gen=52 total_max=0.091461s total_avg=0.091430s compute_max=0.046275s compute_avg=0.032161s comm_max=0.066094s comm_avg=0.059250s root_ops=0.004488s overhead_ratio=0.772
+Running Generation 53...
+*** Completed generation 53 after 4.8684187 seconds ***
+- Best fitness in generation 53 is 7.9265246
+-- Overall best fitness is found in generation 53 and is 7.9265246
+[MPI_TIMING] gen=53 total_max=0.091304s total_avg=0.091280s compute_max=0.046183s compute_avg=0.032106s comm_max=0.065990s comm_avg=0.059155s root_ops=0.004489s overhead_ratio=0.772
+Running Generation 54...
+*** Completed generation 54 after 4.9596863 seconds ***
+- Best fitness in generation 54 is 7.9258814
+-- Overall best fitness is found in generation 54 and is 7.9258814
+[MPI_TIMING] gen=54 total_max=0.091270s total_avg=0.091248s compute_max=0.046132s compute_avg=0.032097s comm_max=0.065931s comm_avg=0.059132s root_ops=0.004492s overhead_ratio=0.772
+Running Generation 55...
+*** Completed generation 55 after 5.0508995 seconds ***
+- Best fitness in generation 55 is 7.9265246
+-- Overall best fitness is found in generation 54 and is 7.9258814
+[MPI_TIMING] gen=55 total_max=0.091186s total_avg=0.091126s compute_max=0.046133s compute_avg=0.032093s comm_max=0.065888s comm_avg=0.059015s root_ops=0.004442s overhead_ratio=0.771
+Running Generation 56...
+*** Completed generation 56 after 5.142275 seconds ***
+- Best fitness in generation 56 is 7.928459
+-- Overall best fitness is found in generation 54 and is 7.9258814
+[MPI_TIMING] gen=56 total_max=0.091428s total_avg=0.091344s compute_max=0.046270s compute_avg=0.031986s comm_max=0.066057s comm_avg=0.059339s root_ops=0.004400s overhead_ratio=0.771
+Running Generation 57...
+*** Completed generation 57 after 5.233423 seconds ***
+- Best fitness in generation 57 is 7.927233
+-- Overall best fitness is found in generation 54 and is 7.9258814
+[MPI_TIMING] gen=57 total_max=0.091274s total_avg=0.091231s compute_max=0.046124s compute_avg=0.031630s comm_max=0.065951s comm_avg=0.059582s root_ops=0.004515s overhead_ratio=0.772
+Running Generation 58...
+*** Completed generation 58 after 5.325199 seconds ***
+- Best fitness in generation 58 is 7.927233
+-- Overall best fitness is found in generation 54 and is 7.9258814
+[MPI_TIMING] gen=58 total_max=0.091801s total_avg=0.091769s compute_max=0.046308s compute_avg=0.031620s comm_max=0.066457s comm_avg=0.060130s root_ops=0.004516s overhead_ratio=0.773
+Running Generation 59...
+*** Completed generation 59 after 5.4165883 seconds ***
+- Best fitness in generation 59 is 7.927233
+-- Overall best fitness is found in generation 54 and is 7.9258814
+[MPI_TIMING] gen=59 total_max=0.091362s total_avg=0.091297s compute_max=0.046149s compute_avg=0.031646s comm_max=0.066049s comm_avg=0.059631s root_ops=0.004470s overhead_ratio=0.772
+Running Generation 60...
+*** Completed generation 60 after 5.5078506 seconds ***
+- Best fitness in generation 60 is 7.9242616
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=60 total_max=0.091238s total_avg=0.091190s compute_max=0.046153s compute_avg=0.031630s comm_max=0.065863s comm_avg=0.059541s root_ops=0.004433s overhead_ratio=0.770
+Running Generation 61...
+*** Completed generation 61 after 5.5988927 seconds ***
+- Best fitness in generation 61 is 7.9242616
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=61 total_max=0.091036s total_avg=0.090982s compute_max=0.046040s compute_avg=0.031437s comm_max=0.065690s comm_avg=0.059526s root_ops=0.004403s overhead_ratio=0.770
+Running Generation 62...
+*** Completed generation 62 after 5.68935 seconds ***
+- Best fitness in generation 62 is 7.926997
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=62 total_max=0.090595s total_avg=0.090557s compute_max=0.045510s compute_avg=0.031241s comm_max=0.065256s comm_avg=0.059297s root_ops=0.004504s overhead_ratio=0.770
+Running Generation 63...
+*** Completed generation 63 after 5.7799125 seconds ***
+- Best fitness in generation 63 is 7.926997
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=63 total_max=0.090604s total_avg=0.090511s compute_max=0.045550s compute_avg=0.031246s comm_max=0.065201s comm_avg=0.059246s root_ops=0.004429s overhead_ratio=0.769
+Running Generation 64...
+*** Completed generation 64 after 5.8704057 seconds ***
+- Best fitness in generation 64 is 7.926997
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=64 total_max=0.090433s total_avg=0.090392s compute_max=0.045420s compute_avg=0.031244s comm_max=0.065068s comm_avg=0.059130s root_ops=0.004404s overhead_ratio=0.768
+Running Generation 65...
+*** Completed generation 65 after 5.9608107 seconds ***
+- Best fitness in generation 65 is 7.926997
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=65 total_max=0.090530s total_avg=0.090490s compute_max=0.045455s compute_avg=0.031248s comm_max=0.065163s comm_avg=0.059223s root_ops=0.004498s overhead_ratio=0.769
+Running Generation 66...
+*** Completed generation 66 after 6.0505667 seconds ***
+- Best fitness in generation 66 is 7.926929
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=66 total_max=0.089775s total_avg=0.089750s compute_max=0.045218s compute_avg=0.031125s comm_max=0.064458s comm_avg=0.058606s root_ops=0.004504s overhead_ratio=0.768
+Running Generation 67...
+*** Completed generation 67 after 6.1405706 seconds ***
+- Best fitness in generation 67 is 7.9260516
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=67 total_max=0.090021s total_avg=0.089949s compute_max=0.045379s compute_avg=0.031101s comm_max=0.064649s comm_avg=0.058829s root_ops=0.004447s overhead_ratio=0.768
+Running Generation 68...
+*** Completed generation 68 after 6.230332 seconds ***
+- Best fitness in generation 68 is 7.9260516
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=68 total_max=0.089760s total_avg=0.089735s compute_max=0.045245s compute_avg=0.030881s comm_max=0.064451s comm_avg=0.058835s root_ops=0.004467s overhead_ratio=0.768
+Running Generation 69...
+*** Completed generation 69 after 6.3203034 seconds ***
+- Best fitness in generation 69 is 7.9260516
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=69 total_max=0.089983s total_avg=0.089921s compute_max=0.045270s compute_avg=0.030876s comm_max=0.064617s comm_avg=0.059027s root_ops=0.004420s overhead_ratio=0.767
+Running Generation 70...
+*** Completed generation 70 after 6.4101367 seconds ***
+- Best fitness in generation 70 is 7.9260516
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=70 total_max=0.089822s total_avg=0.089798s compute_max=0.045248s compute_avg=0.030873s comm_max=0.064480s comm_avg=0.058906s root_ops=0.004411s overhead_ratio=0.767
+Running Generation 71...
+*** Completed generation 71 after 6.499732 seconds ***
+- Best fitness in generation 71 is 7.9260516
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=71 total_max=0.089644s total_avg=0.089621s compute_max=0.045220s compute_avg=0.030748s comm_max=0.064339s comm_avg=0.058854s root_ops=0.004463s overhead_ratio=0.768
+Running Generation 72...
+*** Completed generation 72 after 6.5894814 seconds ***
+- Best fitness in generation 72 is 7.9257107
+-- Overall best fitness is found in generation 60 and is 7.9242616
+[MPI_TIMING] gen=72 total_max=0.089720s total_avg=0.089687s compute_max=0.045357s compute_avg=0.030749s comm_max=0.064397s comm_avg=0.058919s root_ops=0.004448s overhead_ratio=0.767
+Running Generation 73...
+*** Completed generation 73 after 6.679138 seconds ***
+- Best fitness in generation 73 is 7.922562
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=73 total_max=0.089681s total_avg=0.089627s compute_max=0.045351s compute_avg=0.030652s comm_max=0.064313s comm_avg=0.058956s root_ops=0.004414s overhead_ratio=0.766
+Running Generation 74...
+*** Completed generation 74 after 6.7689915 seconds ***
+- Best fitness in generation 74 is 7.922562
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=74 total_max=0.089913s total_avg=0.089886s compute_max=0.045377s compute_avg=0.030635s comm_max=0.064594s comm_avg=0.059232s root_ops=0.004502s overhead_ratio=0.768
+Running Generation 75...
+*** Completed generation 75 after 6.858788 seconds ***
+- Best fitness in generation 75 is 7.922562
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=75 total_max=0.089817s total_avg=0.089793s compute_max=0.045314s compute_avg=0.030635s comm_max=0.064517s comm_avg=0.059139s root_ops=0.004494s overhead_ratio=0.768
+Running Generation 76...
+*** Completed generation 76 after 6.948585 seconds ***
+- Best fitness in generation 76 is 7.922562
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=76 total_max=0.089797s total_avg=0.089770s compute_max=0.045275s compute_avg=0.030628s comm_max=0.064585s comm_avg=0.059123s root_ops=0.004498s overhead_ratio=0.769
+Running Generation 77...
+*** Completed generation 77 after 7.038293 seconds ***
+- Best fitness in generation 77 is 7.922562
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=77 total_max=0.089741s total_avg=0.089716s compute_max=0.045339s compute_avg=0.030630s comm_max=0.064447s comm_avg=0.059067s root_ops=0.004497s overhead_ratio=0.768
+Running Generation 78...
+*** Completed generation 78 after 7.1280904 seconds ***
+- Best fitness in generation 78 is 7.923167
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=78 total_max=0.089770s total_avg=0.089725s compute_max=0.045325s compute_avg=0.030549s comm_max=0.064478s comm_avg=0.059157s root_ops=0.004469s overhead_ratio=0.768
+Running Generation 79...
+*** Completed generation 79 after 7.2176733 seconds ***
+- Best fitness in generation 79 is 7.923167
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=79 total_max=0.089574s total_avg=0.089504s compute_max=0.045323s compute_avg=0.030511s comm_max=0.064236s comm_avg=0.058974s root_ops=0.004416s overhead_ratio=0.766
+Running Generation 80...
+*** Completed generation 80 after 7.30727 seconds ***
+- Best fitness in generation 80 is 7.923167
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=80 total_max=0.089648s total_avg=0.089624s compute_max=0.045316s compute_avg=0.030511s comm_max=0.064328s comm_avg=0.059094s root_ops=0.004437s overhead_ratio=0.767
+Running Generation 81...
+*** Completed generation 81 after 7.397209 seconds ***
+- Best fitness in generation 81 is 7.9231124
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=81 total_max=0.089925s total_avg=0.089890s compute_max=0.045314s compute_avg=0.030512s comm_max=0.064616s comm_avg=0.059360s root_ops=0.004419s overhead_ratio=0.768
+Running Generation 82...
+*** Completed generation 82 after 7.4867887 seconds ***
+- Best fitness in generation 82 is 7.922836
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=82 total_max=0.089576s total_avg=0.089550s compute_max=0.045325s compute_avg=0.030502s comm_max=0.064198s comm_avg=0.059030s root_ops=0.004438s overhead_ratio=0.766
+Running Generation 83...
+*** Completed generation 83 after 7.5765333 seconds ***
+- Best fitness in generation 83 is 7.922836
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=83 total_max=0.089836s total_avg=0.089807s compute_max=0.045443s compute_avg=0.030634s comm_max=0.064522s comm_avg=0.059154s root_ops=0.004507s overhead_ratio=0.768
+Running Generation 84...
+*** Completed generation 84 after 7.669283 seconds ***
+- Best fitness in generation 84 is 7.922836
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=84 total_max=0.092729s total_avg=0.092681s compute_max=0.048924s compute_avg=0.030633s comm_max=0.067468s comm_avg=0.062029s root_ops=0.004475s overhead_ratio=0.776
+Running Generation 85...
+*** Completed generation 85 after 7.7589054 seconds ***
+- Best fitness in generation 85 is 7.922836
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=85 total_max=0.089623s total_avg=0.089570s compute_max=0.045289s compute_avg=0.030408s comm_max=0.064257s comm_avg=0.059143s root_ops=0.004438s overhead_ratio=0.766
+Running Generation 86...
+*** Completed generation 86 after 7.848546 seconds ***
+- Best fitness in generation 86 is 7.925784
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=86 total_max=0.089710s total_avg=0.089684s compute_max=0.045228s compute_avg=0.030399s comm_max=0.064380s comm_avg=0.059266s root_ops=0.004502s overhead_ratio=0.768
+Running Generation 87...
+*** Completed generation 87 after 7.938364 seconds ***
+- Best fitness in generation 87 is 7.925784
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=87 total_max=0.089842s total_avg=0.089757s compute_max=0.045289s compute_avg=0.030402s comm_max=0.064478s comm_avg=0.059337s root_ops=0.004429s overhead_ratio=0.767
+Running Generation 88...
+*** Completed generation 88 after 8.028095 seconds ***
+- Best fitness in generation 88 is 7.925784
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=88 total_max=0.089780s total_avg=0.089753s compute_max=0.045315s compute_avg=0.030408s comm_max=0.064432s comm_avg=0.059326s root_ops=0.004485s overhead_ratio=0.768
+Running Generation 89...
+*** Completed generation 89 after 8.117787 seconds ***
+- Best fitness in generation 89 is 7.924012
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=89 total_max=0.089699s total_avg=0.089661s compute_max=0.045260s compute_avg=0.030406s comm_max=0.064343s comm_avg=0.059237s root_ops=0.004463s overhead_ratio=0.767
+Running Generation 90...
+*** Completed generation 90 after 8.207493 seconds ***
+- Best fitness in generation 90 is 7.924012
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=90 total_max=0.089695s total_avg=0.089673s compute_max=0.045294s compute_avg=0.030404s comm_max=0.064352s comm_avg=0.059250s root_ops=0.004460s overhead_ratio=0.767
+Running Generation 91...
+*** Completed generation 91 after 8.297104 seconds ***
+- Best fitness in generation 91 is 7.924012
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=91 total_max=0.089608s total_avg=0.089566s compute_max=0.045281s compute_avg=0.030408s comm_max=0.064282s comm_avg=0.059139s root_ops=0.004433s overhead_ratio=0.767
+Running Generation 92...
+*** Completed generation 92 after 8.386824 seconds ***
+- Best fitness in generation 92 is 7.924012
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=92 total_max=0.089755s total_avg=0.089730s compute_max=0.045314s compute_avg=0.030406s comm_max=0.064450s comm_avg=0.059305s root_ops=0.004448s overhead_ratio=0.768
+Running Generation 93...
+*** Completed generation 93 after 8.476466 seconds ***
+- Best fitness in generation 93 is 7.924012
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=93 total_max=0.089684s total_avg=0.089657s compute_max=0.045303s compute_avg=0.030309s comm_max=0.064465s comm_avg=0.059329s root_ops=0.004483s overhead_ratio=0.769
+Running Generation 94...
+*** Completed generation 94 after 8.566321 seconds ***
+- Best fitness in generation 94 is 7.9260674
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=94 total_max=0.089845s total_avg=0.089818s compute_max=0.045369s compute_avg=0.030174s comm_max=0.064496s comm_avg=0.059624s root_ops=0.004503s overhead_ratio=0.768
+Running Generation 95...
+*** Completed generation 95 after 8.655954 seconds ***
+- Best fitness in generation 95 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=95 total_max=0.089640s total_avg=0.089596s compute_max=0.045313s compute_avg=0.029823s comm_max=0.064259s comm_avg=0.059754s root_ops=0.004476s overhead_ratio=0.767
+Running Generation 96...
+*** Completed generation 96 after 8.746239 seconds ***
+- Best fitness in generation 96 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=96 total_max=0.090378s total_avg=0.090341s compute_max=0.045774s compute_avg=0.029827s comm_max=0.065085s comm_avg=0.060494s root_ops=0.004540s overhead_ratio=0.770
+Running Generation 97...
+*** Completed generation 97 after 8.835572 seconds ***
+- Best fitness in generation 97 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=97 total_max=0.089309s total_avg=0.089160s compute_max=0.045349s compute_avg=0.029748s comm_max=0.063921s comm_avg=0.059393s root_ops=0.004403s overhead_ratio=0.765
+Running Generation 98...
+*** Completed generation 98 after 8.924652 seconds ***
+- Best fitness in generation 98 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=98 total_max=0.089218s total_avg=0.089182s compute_max=0.045256s compute_avg=0.029683s comm_max=0.063887s comm_avg=0.059480s root_ops=0.004534s overhead_ratio=0.767
+Running Generation 99...
+*** Completed generation 99 after 9.01385 seconds ***
+- Best fitness in generation 99 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=99 total_max=0.089173s total_avg=0.089056s compute_max=0.045245s compute_avg=0.029808s comm_max=0.063816s comm_avg=0.059229s root_ops=0.004430s overhead_ratio=0.765
+Running Generation 100...
+*** Completed generation 100 after 9.102792 seconds ***
+- Best fitness in generation 100 is 7.9257765
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=100 total_max=0.088987s total_avg=0.088954s compute_max=0.045195s compute_avg=0.029803s comm_max=0.063675s comm_avg=0.059132s root_ops=0.004435s overhead_ratio=0.765
+Running Generation 101...
+*** Completed generation 101 after 9.191853 seconds ***
+- Best fitness in generation 101 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=101 total_max=0.089055s total_avg=0.089029s compute_max=0.045218s compute_avg=0.029810s comm_max=0.063756s comm_avg=0.059200s root_ops=0.004449s overhead_ratio=0.766
+Running Generation 102...
+*** Completed generation 102 after 9.280746 seconds ***
+- Best fitness in generation 102 is 7.9257975
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=102 total_max=0.088897s total_avg=0.088842s compute_max=0.045206s compute_avg=0.029803s comm_max=0.063576s comm_avg=0.059020s root_ops=0.004409s overhead_ratio=0.765
+Running Generation 103...
+*** Completed generation 103 after 9.369764 seconds ***
+- Best fitness in generation 103 is 7.925763
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=103 total_max=0.089075s total_avg=0.089052s compute_max=0.045188s compute_avg=0.029808s comm_max=0.063733s comm_avg=0.059225s root_ops=0.004468s overhead_ratio=0.766
+Running Generation 104...
+*** Completed generation 104 after 9.458823 seconds ***
+- Best fitness in generation 104 is 7.925763
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=104 total_max=0.089065s total_avg=0.089043s compute_max=0.045248s compute_avg=0.029799s comm_max=0.063736s comm_avg=0.059226s root_ops=0.004473s overhead_ratio=0.766
+Running Generation 105...
+*** Completed generation 105 after 9.547983 seconds ***
+- Best fitness in generation 105 is 7.925763
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=105 total_max=0.089190s total_avg=0.089166s compute_max=0.045227s compute_avg=0.029799s comm_max=0.063909s comm_avg=0.059348s root_ops=0.004491s overhead_ratio=0.767
+Running Generation 106...
+*** Completed generation 106 after 9.636953 seconds ***
+- Best fitness in generation 106 is 7.925763
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=106 total_max=0.088974s total_avg=0.088919s compute_max=0.045209s compute_avg=0.029805s comm_max=0.063665s comm_avg=0.059095s root_ops=0.004452s overhead_ratio=0.766
+Running Generation 107...
+*** Completed generation 107 after 9.726096 seconds ***
+- Best fitness in generation 107 is 7.925147
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=107 total_max=0.089206s total_avg=0.089168s compute_max=0.045241s compute_avg=0.029805s comm_max=0.063872s comm_avg=0.059344s root_ops=0.004510s overhead_ratio=0.767
+Running Generation 108...
+*** Completed generation 108 after 9.815207 seconds ***
+- Best fitness in generation 108 is 7.925147
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=108 total_max=0.089160s total_avg=0.089068s compute_max=0.045189s compute_avg=0.029803s comm_max=0.063768s comm_avg=0.059247s root_ops=0.004432s overhead_ratio=0.765
+Running Generation 109...
+*** Completed generation 109 after 9.9041395 seconds ***
+- Best fitness in generation 109 is 7.924554
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=109 total_max=0.088966s total_avg=0.088938s compute_max=0.045219s compute_avg=0.029673s comm_max=0.063681s comm_avg=0.059247s root_ops=0.004482s overhead_ratio=0.766
+Running Generation 110...
+*** Completed generation 110 after 9.993126 seconds ***
+- Best fitness in generation 110 is 7.924554
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=110 total_max=0.088958s total_avg=0.088916s compute_max=0.045143s compute_avg=0.029672s comm_max=0.063658s comm_avg=0.059225s root_ops=0.004452s overhead_ratio=0.766
+Running Generation 111...
+*** Completed generation 111 after 10.0822525 seconds ***
+- Best fitness in generation 111 is 7.924554
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=111 total_max=0.089115s total_avg=0.089087s compute_max=0.045228s compute_avg=0.029680s comm_max=0.063795s comm_avg=0.059389s root_ops=0.004444s overhead_ratio=0.766
+Running Generation 112...
+*** Completed generation 112 after 10.171234 seconds ***
+- Best fitness in generation 112 is 7.924554
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=112 total_max=0.089047s total_avg=0.089020s compute_max=0.045161s compute_avg=0.029677s comm_max=0.063791s comm_avg=0.059324s root_ops=0.004490s overhead_ratio=0.767
+Running Generation 113...
+*** Completed generation 113 after 10.260357 seconds ***
+- Best fitness in generation 113 is 7.924554
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=113 total_max=0.089098s total_avg=0.089065s compute_max=0.045185s compute_avg=0.029678s comm_max=0.063790s comm_avg=0.059368s root_ops=0.004476s overhead_ratio=0.766
+Running Generation 114...
+*** Completed generation 114 after 10.349265 seconds ***
+- Best fitness in generation 114 is 7.924613
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=114 total_max=0.088951s total_avg=0.088914s compute_max=0.045240s compute_avg=0.029682s comm_max=0.063643s comm_avg=0.059212s root_ops=0.004494s overhead_ratio=0.766
+Running Generation 115...
+*** Completed generation 115 after 10.438283 seconds ***
+- Best fitness in generation 115 is 7.924613
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=115 total_max=0.089020s total_avg=0.088980s compute_max=0.045187s compute_avg=0.029440s comm_max=0.063718s comm_avg=0.059522s root_ops=0.004470s overhead_ratio=0.766
+Running Generation 116...
+*** Completed generation 116 after 10.527109 seconds ***
+- Best fitness in generation 116 is 7.924613
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=116 total_max=0.088843s total_avg=0.088813s compute_max=0.045175s compute_avg=0.029428s comm_max=0.063510s comm_avg=0.059366s root_ops=0.004455s overhead_ratio=0.765
+Running Generation 117...
+*** Completed generation 117 after 10.616058 seconds ***
+- Best fitness in generation 117 is 7.923358
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=117 total_max=0.088959s total_avg=0.088935s compute_max=0.045155s compute_avg=0.029436s comm_max=0.063629s comm_avg=0.059481s root_ops=0.004472s overhead_ratio=0.766
+Running Generation 118...
+*** Completed generation 118 after 10.704981 seconds ***
+- Best fitness in generation 118 is 7.923358
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=118 total_max=0.088990s total_avg=0.088965s compute_max=0.045151s compute_avg=0.029445s comm_max=0.063692s comm_avg=0.059502s root_ops=0.004559s overhead_ratio=0.767
+Running Generation 119...
+*** Completed generation 119 after 10.79407 seconds ***
+- Best fitness in generation 119 is 7.923358
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=119 total_max=0.089108s total_avg=0.089034s compute_max=0.045162s compute_avg=0.029435s comm_max=0.063772s comm_avg=0.059580s root_ops=0.004497s overhead_ratio=0.766
+Running Generation 120...
+*** Completed generation 120 after 10.883046 seconds ***
+- Best fitness in generation 120 is 7.923358
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=120 total_max=0.088963s total_avg=0.088924s compute_max=0.045171s compute_avg=0.029441s comm_max=0.063714s comm_avg=0.059464s root_ops=0.004474s overhead_ratio=0.766
+Running Generation 121...
+*** Completed generation 121 after 10.97201 seconds ***
+- Best fitness in generation 121 is 7.9242687
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=121 total_max=0.088986s total_avg=0.088963s compute_max=0.045151s compute_avg=0.029432s comm_max=0.063707s comm_avg=0.059512s root_ops=0.004487s overhead_ratio=0.766
+Running Generation 122...
+*** Completed generation 122 after 11.060949 seconds ***
+- Best fitness in generation 122 is 7.9226527
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=122 total_max=0.088961s total_avg=0.088937s compute_max=0.045182s compute_avg=0.029429s comm_max=0.063662s comm_avg=0.059490s root_ops=0.004495s overhead_ratio=0.766
+Running Generation 123...
+*** Completed generation 123 after 11.150004 seconds ***
+- Best fitness in generation 123 is 7.923223
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=123 total_max=0.089056s total_avg=0.088967s compute_max=0.045172s compute_avg=0.029427s comm_max=0.063609s comm_avg=0.059522s root_ops=0.004423s overhead_ratio=0.764
+Running Generation 124...
+*** Completed generation 124 after 11.239021 seconds ***
+- Best fitness in generation 124 is 7.923223
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=124 total_max=0.089028s total_avg=0.089002s compute_max=0.045221s compute_avg=0.029437s comm_max=0.063717s comm_avg=0.059546s root_ops=0.004450s overhead_ratio=0.766
+Running Generation 125...
+*** Completed generation 125 after 11.327994 seconds ***
+- Best fitness in generation 125 is 7.9242687
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=125 total_max=0.089023s total_avg=0.089000s compute_max=0.045187s compute_avg=0.029441s comm_max=0.063682s comm_avg=0.059540s root_ops=0.004481s overhead_ratio=0.766
+Running Generation 126...
+*** Completed generation 126 after 11.416959 seconds ***
+- Best fitness in generation 126 is 7.9266486
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=126 total_max=0.088950s total_avg=0.088926s compute_max=0.045212s compute_avg=0.029441s comm_max=0.063586s comm_avg=0.059466s root_ops=0.004475s overhead_ratio=0.765
+Running Generation 127...
+*** Completed generation 127 after 11.505923 seconds ***
+- Best fitness in generation 127 is 7.9262733
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=127 total_max=0.088967s total_avg=0.088937s compute_max=0.045119s compute_avg=0.029438s comm_max=0.063704s comm_avg=0.059481s root_ops=0.004461s overhead_ratio=0.766
+Running Generation 128...
+*** Completed generation 128 after 11.594857 seconds ***
+- Best fitness in generation 128 is 7.9247594
+-- Overall best fitness is found in generation 73 and is 7.922562
+[MPI_TIMING] gen=128 total_max=0.088930s total_avg=0.088908s compute_max=0.045168s compute_avg=0.029436s comm_max=0.063627s comm_avg=0.059454s root_ops=0.004461s overhead_ratio=0.766
+Running Generation 129...
+*** Completed generation 129 after 11.683692 seconds ***
+- Best fitness in generation 129 is 7.9223027
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=129 total_max=0.088847s total_avg=0.088791s compute_max=0.045115s compute_avg=0.029432s comm_max=0.063508s comm_avg=0.059340s root_ops=0.004421s overhead_ratio=0.765
+Running Generation 130...
+*** Completed generation 130 after 11.7725 seconds ***
+- Best fitness in generation 130 is 7.9223027
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=130 total_max=0.088870s total_avg=0.088805s compute_max=0.045144s compute_avg=0.029432s comm_max=0.063560s comm_avg=0.059354s root_ops=0.004436s overhead_ratio=0.765
+Running Generation 131...
+*** Completed generation 131 after 11.861494 seconds ***
+- Best fitness in generation 131 is 7.9223027
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=131 total_max=0.089074s total_avg=0.089034s compute_max=0.045223s compute_avg=0.029426s comm_max=0.063767s comm_avg=0.059589s root_ops=0.004506s overhead_ratio=0.766
+Running Generation 132...
+*** Completed generation 132 after 11.950567 seconds ***
+- Best fitness in generation 132 is 7.9223027
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=132 total_max=0.089088s total_avg=0.089005s compute_max=0.045204s compute_avg=0.029433s comm_max=0.063746s comm_avg=0.059553s root_ops=0.004436s overhead_ratio=0.765
+Running Generation 133...
+*** Completed generation 133 after 12.039859 seconds ***
+- Best fitness in generation 133 is 7.9223027
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=133 total_max=0.089295s total_avg=0.089273s compute_max=0.045201s compute_avg=0.029427s comm_max=0.063984s comm_avg=0.059828s root_ops=0.004463s overhead_ratio=0.767
+Running Generation 134...
+*** Completed generation 134 after 12.128767 seconds ***
+- Best fitness in generation 134 is 7.9247594
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=134 total_max=0.088924s total_avg=0.088842s compute_max=0.045145s compute_avg=0.029420s comm_max=0.063531s comm_avg=0.059403s root_ops=0.004392s overhead_ratio=0.764
+Running Generation 135...
+*** Completed generation 135 after 12.21775 seconds ***
+- Best fitness in generation 135 is 7.9231944
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=135 total_max=0.089077s total_avg=0.089048s compute_max=0.045078s compute_avg=0.029430s comm_max=0.063720s comm_avg=0.059599s root_ops=0.004517s overhead_ratio=0.766
+Running Generation 136...
+*** Completed generation 136 after 12.306715 seconds ***
+- Best fitness in generation 136 is 7.9230537
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=136 total_max=0.088993s total_avg=0.088928s compute_max=0.045160s compute_avg=0.029441s comm_max=0.063594s comm_avg=0.059468s root_ops=0.004461s overhead_ratio=0.765
+Running Generation 137...
+*** Completed generation 137 after 12.39578 seconds ***
+- Best fitness in generation 137 is 7.9230537
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=137 total_max=0.089097s total_avg=0.089072s compute_max=0.045234s compute_avg=0.029436s comm_max=0.063817s comm_avg=0.059617s root_ops=0.004501s overhead_ratio=0.767
+Running Generation 138...
+*** Completed generation 138 after 12.484829 seconds ***
+- Best fitness in generation 138 is 7.9231944
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=138 total_max=0.089029s total_avg=0.088992s compute_max=0.045174s compute_avg=0.029426s comm_max=0.063703s comm_avg=0.059547s root_ops=0.004478s overhead_ratio=0.766
+Running Generation 139...
+*** Completed generation 139 after 12.573936 seconds ***
+- Best fitness in generation 139 is 7.9253626
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=139 total_max=0.089103s total_avg=0.089056s compute_max=0.045209s compute_avg=0.029434s comm_max=0.063740s comm_avg=0.059603s root_ops=0.004446s overhead_ratio=0.765
+Running Generation 140...
+*** Completed generation 140 after 12.6627655 seconds ***
+- Best fitness in generation 140 is 7.9253626
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=140 total_max=0.088892s total_avg=0.088865s compute_max=0.045124s compute_avg=0.029421s comm_max=0.063557s comm_avg=0.059426s root_ops=0.004499s overhead_ratio=0.766
+Running Generation 141...
+*** Completed generation 141 after 12.751651 seconds ***
+- Best fitness in generation 141 is 7.9228535
+-- Overall best fitness is found in generation 129 and is 7.9223027
+[MPI_TIMING] gen=141 total_max=0.088899s total_avg=0.088839s compute_max=0.045235s compute_avg=0.029425s comm_max=0.063615s comm_avg=0.059395s root_ops=0.004455s overhead_ratio=0.766
+Running Generation 142...
+*** Completed generation 142 after 12.840637 seconds ***
+- Best fitness in generation 142 is 7.9217405
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=142 total_max=0.089007s total_avg=0.088986s compute_max=0.045124s compute_avg=0.029428s comm_max=0.063654s comm_avg=0.059539s root_ops=0.004484s overhead_ratio=0.766
+Running Generation 143...
+*** Completed generation 143 after 12.929654 seconds ***
+- Best fitness in generation 143 is 7.9217405
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=143 total_max=0.089022s total_avg=0.088994s compute_max=0.045135s compute_avg=0.029429s comm_max=0.063708s comm_avg=0.059546s root_ops=0.004470s overhead_ratio=0.766
+Running Generation 144...
+*** Completed generation 144 after 13.018773 seconds ***
+- Best fitness in generation 144 is 7.9217405
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=144 total_max=0.089175s total_avg=0.089148s compute_max=0.045354s compute_avg=0.029430s comm_max=0.063873s comm_avg=0.059700s root_ops=0.004484s overhead_ratio=0.767
+Running Generation 145...
+*** Completed generation 145 after 13.107861 seconds ***
+- Best fitness in generation 145 is 7.9217777
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=145 total_max=0.089049s total_avg=0.089021s compute_max=0.045200s compute_avg=0.029445s comm_max=0.063725s comm_avg=0.059556s root_ops=0.004476s overhead_ratio=0.766
+Running Generation 146...
+*** Completed generation 146 after 13.197295 seconds ***
+- Best fitness in generation 146 is 7.9217777
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=146 total_max=0.089494s total_avg=0.089470s compute_max=0.045155s compute_avg=0.029459s comm_max=0.064147s comm_avg=0.059991s root_ops=0.004505s overhead_ratio=0.767
+Running Generation 147...
+*** Completed generation 147 after 13.286522 seconds ***
+- Best fitness in generation 147 is 7.9245076
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=147 total_max=0.089229s total_avg=0.089110s compute_max=0.045144s compute_avg=0.029447s comm_max=0.063760s comm_avg=0.059644s root_ops=0.004397s overhead_ratio=0.764
+Running Generation 148...
+*** Completed generation 148 after 13.375569 seconds ***
+- Best fitness in generation 148 is 7.9245076
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=148 total_max=0.089785s total_avg=0.089089s compute_max=0.045213s compute_avg=0.029440s comm_max=0.064391s comm_avg=0.059630s root_ops=0.004461s overhead_ratio=0.767
+Running Generation 149...
+*** Completed generation 149 after 13.474253 seconds ***
+- Best fitness in generation 149 is 7.9245076
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=149 total_max=0.116663s total_avg=0.108369s compute_max=0.050436s compute_avg=0.029588s comm_max=0.083060s comm_avg=0.078762s root_ops=0.004439s overhead_ratio=0.750
+Running Generation 150...
+*** Completed generation 150 after 13.590707 seconds ***
+- Best fitness in generation 150 is 7.926163
+-- Overall best fitness is found in generation 142 and is 7.9217405
+[MPI_TIMING] gen=150 total_max=0.125285s total_avg=0.116765s compute_max=0.045238s compute_avg=0.029435s comm_max=0.099919s comm_avg=0.087311s root_ops=0.004478s overhead_ratio=0.833
+Reached 150 generations, exiting...
+
+
+- Overall best fitness is 7.9217405
+- The best individual is:
+                generation:	142
+                index:		24
+                fitness:	7.9217405
+                string:	0.00000;0.42474;0.00000;0.00000;0.43560;0.67601;0.58216
+

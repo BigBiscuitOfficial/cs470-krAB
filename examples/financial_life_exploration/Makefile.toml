@@ -1,0 +1,16 @@
+[env]
+ENV_DIR = {source = "${CARGO_MAKE_PROFILE}", default_value = "debug", mapping = {release = "release"}}
+CARGO_TARGET_DIR = {value = "target", condition = {env_not_set = ["CARGO_TARGET_DIR"]}}
+CARGO_PROFILE = "dev"
+
+[env.release]
+CARGO_RELEASE_ARGS = "--release"
+
+[tasks.build]
+args = ["build", "--features", "distributed_mpi", "@@split(CARGO_RELEASE_ARGS, )"]
+command = "cargo"
+
+[tasks.run]
+command = "cargo"
+args = ["run", "--features", "distributed_mpi", "@@split(CARGO_RELEASE_ARGS, )"]
+dependencies = ["build"]

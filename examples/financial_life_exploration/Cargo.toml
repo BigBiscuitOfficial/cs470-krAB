@@ -1,0 +1,15 @@
+[package]
+name = "finance_life_exploration"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+krabmaga = {path = "../../krABMaga"}
+mpi = { version = "0.6", optional=true, features = ["user-operations", "derive"] }
+
+[features]
+distributed_mpi = ["krabmaga/distributed_mpi"]
+parallel = ["krabmaga/parallel"]
+mpi_verbose_timing = ["krabmaga/mpi_verbose_timing"]
