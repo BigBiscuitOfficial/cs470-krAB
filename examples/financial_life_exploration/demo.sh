@@ -87,7 +87,7 @@ python3 tools/demo_day_summary.py summary "$SUMMARY_FILE" "$baseline_file" "$DEM
 
 echo "Seed used: ${FIN_SEED}"
 echo "Summary written to ${SUMMARY_FILE}"
-echo "Demo-day summary written to ${DEMO_DAY_SUMMARY_FILE}"
+echo "Demo Summary written to ${DEMO_DAY_SUMMARY_FILE}"
 echo "Interpretations written to outcomes/"
 echo
 cat "$DEMO_DAY_SUMMARY_FILE"

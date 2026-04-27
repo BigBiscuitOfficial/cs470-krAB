@@ -185,7 +185,7 @@ def build_demo_summary(args: argparse.Namespace) -> None:
     lines.extend(["", "Best-agent strategy:"])
     lines.extend(f"  {line}" for line in extract_strategy_lines(best_interpretation_path))
 
-    lines.extend(["", "Parallel and distributed systems takeaways:"])
+    lines.extend(["", "Takeaways:"])
     if baseline:
         lines.append(
             "  Baseline: "
