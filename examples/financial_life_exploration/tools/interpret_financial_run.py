@@ -195,9 +195,6 @@ def build_report(summary: RunSummary) -> str:
         lines.append(f"- {reason}")
 
     lines.append("")
-    lines.append(
-        "Demo takeaway: this run did not just find a lower fitness number; it found a policy profile with a readable financial strategy."
-    )
 
     return "\n".join(lines)
 
