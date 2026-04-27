@@ -5,7 +5,7 @@ import argparse
 import csv
 import re
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 
 def as_float(row: Dict[str, str], key: str, default: float = 0.0) -> float:
@@ -119,7 +119,7 @@ def extract_strategy_lines(interpretation_path: Path) -> List[str]:
 
 def best_agent_interpretation(
     rows: List[Dict[str, str]], fallback_path: Path
-) -> tuple[Optional[Dict[str, str]], Path]:
+) -> Tuple[Optional[Dict[str, str]], Path]:
     fitness_rows = [
         row for row in rows if row.get("best_fitness") not in {"", "N/A", None}
     ]
