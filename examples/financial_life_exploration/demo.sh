@@ -13,9 +13,9 @@ cp parsetocsv.py runs/parsetocsv.py
 export FIN_SEED=1234
 export FIN_HORIZON=30
 export FIN_REPETITIONS=4
-export FIN_MAX_GENERATION=12
+export FIN_MAX_GENERATION=40
 export FIN_HOUSEHOLDS=24
-export FIN_INDIVIDUALS=64
+export FIN_INDIVIDUALS=128
 export DEMO_PROCS="${DEMO_PROCS:-1 2 4 8 16 32 64}"
 
 

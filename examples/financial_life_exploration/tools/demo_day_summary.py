@@ -173,7 +173,7 @@ def build_demo_summary(args: argparse.Namespace) -> None:
     )
 
     lines = [
-        "Demo-Day Summary",
+        "Summary",
         f"This was the strategy taken by the best agent on seed {args.seed}.",
     ]
     if best_agent:
