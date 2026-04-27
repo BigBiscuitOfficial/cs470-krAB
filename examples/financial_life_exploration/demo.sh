@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 module load mpi
 
@@ -7,15 +6,17 @@ export LIBCLANG_PATH=/shared/common/clang+llvm-14.0.0/lib/
 export BINDGEN_EXTRA_CLANG_ARGS="-I/usr/lib/gcc/x86_64-redhat-linux/8/include"
 
 mkdir -p runs outcomes
+cp parsetocsv.py runs/parsetocsv.py
 
+# INDIVIDUALS MUST BE >= NUM PROCESSES
 # defaults
-export FIN_SEED="${FIN_SEED:-1234}"
-export FIN_HORIZON="${FIN_HORIZON:-30}"
-export FIN_REPETITIONS="${FIN_REPETITIONS:-4}"
-export FIN_MAX_GENERATION="${FIN_MAX_GENERATION:-12}"
-export FIN_HOUSEHOLDS="${FIN_HOUSEHOLDS:-24}"
-export FIN_INDIVIDUALS="${FIN_INDIVIDUALS:-64}"
-DEMO_PROCS="${DEMO_PROCS:-1 2 4 8 16 32 64 128}"
+export FIN_SEED=1234
+export FIN_HORIZON=30
+export FIN_REPETITIONS=4
+export FIN_MAX_GENERATION=12
+export FIN_HOUSEHOLDS=24
+export FIN_INDIVIDUALS=64
+
 
 
 SUMMARY_FILE="outcomes/demo_summary.tsv"
@@ -36,16 +37,15 @@ echo "  FIN_INDIVIDUALS=$FIN_INDIVIDUALS"
 echo "  DEMO_PROCS=$DEMO_PROCS"
 echo
 
-for i in $DEMO_PROCS
+for i in 1 2 4 8 16 32 64
 do
     log_file="runs/finance_life_run_${i}_procs.log"
     interpretation_file="outcomes/financial_interpretation_${i}_procs.txt"
     diff_file="outcomes/financial_interpretation_${i}_procs.diff"
 
     echo "Running with ${i} MPI process(es)..."
-    start_time=$SECONDS
     salloc -Q -n "$i" mpirun ../target/release/finance_life_exploration > "$log_file" 2>&1
-    elapsed=$((SECONDS - start_time))
+
 
     python3 tools/interpret_financial_run.py "$log_file" -o "$interpretation_file"
 
@@ -65,6 +65,8 @@ do
     echo "Completed ${i} proc run in ${elapsed}s (${interpretation_status})"
     echo
 done
+cd runs && python3 parsetocsv.py 
+cd ..
 
 echo "Seed used: ${FIN_SEED}"
 echo "Summary written to ${SUMMARY_FILE}"
