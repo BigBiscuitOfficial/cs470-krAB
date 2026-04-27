@@ -147,12 +147,19 @@ fn init_population() -> Vec<String> {
 
     for _ in 0..config.individuals {
         let genes = [
+            // frugality
             rng.random_range(0.10..=0.95),
+            // savings_discipline
             rng.random_range(0.05..=0.90),
+            // career_drive
             rng.random_range(0.05..=0.95),
+            // risk_tolerance
             rng.random_range(0.00..=1.00),
+            // resilience
             rng.random_range(0.00..=1.00),
+            // family_pressure
             rng.random_range(0.00..=1.00),
+            // education_investment
             rng.random_range(0.00..=1.00),
         ];
         population.push(format_genome(&genes));
