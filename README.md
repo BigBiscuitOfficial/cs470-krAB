@@ -4,7 +4,7 @@ Final project repository for CS470 by Landon Mann and Giovani Nunez-Lopez.
 
 This project uses the `krABMaga` agent-based modeling framework to run a distributed MPI genetic algorithm for financial life-cycle simulation. The main target is the `financial_life_exploration` example, which evaluates policy genomes across many simulated households and uses parallel execution to study runtime scaling on the school cluster.
 
-[Link to krABMaga Engine Repo](https://github.com/krABMaga/krABMaga)
+[krABMaga Engine Repo](https://github.com/krABMaga/krABMaga)
 
 [krABMaga Examples Repo](https://github.com/krABMaga/examples/)
 
