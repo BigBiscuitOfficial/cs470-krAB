@@ -1,0 +1,75 @@
+services:
+  db:
+    image: mariadb:10.11
+    hostname: db
+    environment:
+      MARIADB_ROOT_PASSWORD: root_pw
+      MARIADB_DATABASE: slurm_acct_db
+      MARIADB_USER: slurm
+      MARIADB_PASSWORD: slurm_pw
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -uroot -proot_pw --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+  controller:
+    build:
+      context: .
+    hostname: controller
+    container_name: slurm-controller
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SLURM_ROLE: controller
+    ports:
+      - "127.0.0.1:2222:22"
+    volumes:
+      - ./config:/cluster-config:ro
+      - shared-home:/shared
+      - controller-home:/home
+      - ..:/home/biscuit/cs470-krAB
+      - slurm-state:/var/spool/slurmctld
+
+  worker01:
+    build:
+      context: .
+    hostname: worker01
+    container_name: slurm-worker01
+    depends_on:
+      - controller
+    environment:
+      SLURM_ROLE: worker
+    volumes:
+      - ./config:/cluster-config:ro
+      - shared-home:/shared
+      - controller-home:/home
+      - ..:/home/biscuit/cs470-krAB
+      - worker01-spool:/var/spool/slurmd
+
+  worker02:
+    build:
+      context: .
+    hostname: worker02
+    container_name: slurm-worker02
+    depends_on:
+      - controller
+    environment:
+      SLURM_ROLE: worker
+    volumes:
+      - ./config:/cluster-config:ro
+      - shared-home:/shared
+      - controller-home:/home
+      - ..:/home/biscuit/cs470-krAB
+      - worker02-spool:/var/spool/slurmd
+
+volumes:
+  controller-home:
+  mariadb-data:
+  shared-home:
+  slurm-state:
+  worker01-spool:
+  worker02-spool:
