@@ -1,10 +1,14 @@
 use krabmaga::*;
-use std::sync::OnceLock;
+use std::sync::{Mutex, OnceLock};
 
 #[cfg(feature = "distributed_mpi")]
 use {
     crate::model::state::FinanceLifeState,
-    krabmaga::{engine::schedule::Schedule, engine::state::State, rand::Rng},
+    krabmaga::{
+        engine::schedule::Schedule,
+        engine::state::State,
+        rand::{rngs::StdRng, Rng, SeedableRng},
+    },
     std::cmp::Ordering::Equal,
 };
 
@@ -31,9 +35,20 @@ impl ScaleConfig {
 }
 
 static SCALE_CONFIG: OnceLock<ScaleConfig> = OnceLock::new();
+static BASE_SEED: OnceLock<u64> = OnceLock::new();
+static GA_RNG: OnceLock<Mutex<StdRng>> = OnceLock::new();
 
 pub fn scale_config() -> &'static ScaleConfig {
     SCALE_CONFIG.get_or_init(ScaleConfig::from_env)
+}
+
+pub fn base_seed() -> u64 {
+    *BASE_SEED.get_or_init(|| read_env_u64("FIN_SEED", 0x5EED_F17E))
+}
+
+#[cfg(feature = "distributed_mpi")]
+fn ga_rng() -> &'static Mutex<StdRng> {
+    GA_RNG.get_or_init(|| Mutex::new(StdRng::seed_from_u64(base_seed().wrapping_add(17))))
 }
 
 fn read_env_u32(name: &str, default: u32) -> u32 {
@@ -71,12 +86,13 @@ fn main() {
     let config = scale_config();
     if UNIVERSE.world().rank() == 0 {
         println!(
-            "Scale config: households={} horizon={} individuals={} max_generation={} repetitions={}",
+            "Scale config: households={} horizon={} individuals={} max_generation={} repetitions={} seed={}",
             config.households,
             config.horizon,
             config.individuals,
             config.max_generation,
             config.repetitions,
+            base_seed(),
         );
     }
 
@@ -126,7 +142,7 @@ fn cmp(fitness1: &f32, fitness2: &f32) -> bool {
 #[cfg(feature = "distributed_mpi")]
 fn init_population() -> Vec<String> {
     let mut population = Vec::new();
-    let mut rng = krabmaga::rand::rng();
+    let mut rng = ga_rng().lock().expect("GA rng mutex poisoned");
     let config = scale_config();
 
     for _ in 0..config.individuals {
@@ -156,7 +172,7 @@ fn crossover(population: &mut Vec<String>) {
         panic!("Population len can't be 0");
     }
 
-    let mut rng = krabmaga::rand::rng();
+    let mut rng = ga_rng().lock().expect("GA rng mutex poisoned");
     let elite_count = ((population.len() as f32) * 0.2).ceil() as usize;
     let elite_count = elite_count.max(1).min(population.len());
     let parent_pool = (population.len() / 2)
@@ -193,7 +209,7 @@ fn crossover(population: &mut Vec<String>) {
 
 #[cfg(feature = "distributed_mpi")]
 fn mutation(individual: &mut String) {
-    let mut rng = krabmaga::rand::rng();
+    let mut rng = ga_rng().lock().expect("GA rng mutex poisoned");
     if !rng.random_bool(MUTATION_RATE as f64) {
         return;
     }

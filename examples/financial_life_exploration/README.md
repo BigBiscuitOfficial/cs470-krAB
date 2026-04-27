@@ -32,6 +32,15 @@ Use MPI to launch the distributed GA:
 mpirun -n 4 cargo run --release --features distributed_mpi
 ```
 
+For a demo-friendly workflow, save the run log and then interpret the winning genome with the standalone Python helper:
+
+```bash
+FIN_SEED=1234 mpirun -n 4 cargo run --release --features distributed_mpi | tee finance_life_run.log
+python3 tools/interpret_financial_run.py finance_life_run.log -o financial_interpretation.txt
+```
+
+The interpreter reads the final best-individual block from the log and turns the winning genome into a short plain-English explanation.
+
 ### Scaling overrides (drop-in)
 
 The example now supports runtime scaling through env vars while keeping defaults unchanged.
@@ -41,6 +50,7 @@ The example now supports runtime scaling through env vars while keeping defaults
 - `FIN_INDIVIDUALS` (default: `256`)
 - `FIN_MAX_GENERATION` (default: `150`)
 - `FIN_REPETITIONS` (default: `8`)
+- `FIN_SEED` (default: `1592655742`, hex `0x5EED_F17E`)
 
 Example:
 

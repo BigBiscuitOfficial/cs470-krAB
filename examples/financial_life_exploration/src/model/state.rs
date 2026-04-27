@@ -1,3 +1,4 @@
+use crate::base_seed;
 use crate::model::household::Household;
 use crate::scale_config;
 use core::fmt;
@@ -161,7 +162,7 @@ impl FinanceLifeState {
     #[allow(dead_code)]
     pub fn new_with_parameters(run_id: usize, parameters: &str) -> FinanceLifeState {
         let config = scale_config();
-        let seed = 0x5EED_F17Eu64.wrapping_add(run_id as u64 * 1_000_003);
+        let seed = base_seed().wrapping_add(run_id as u64 * 1_000_003);
         FinanceLifeState {
             step: 0,
             run_id: run_id as u64,
@@ -301,7 +302,7 @@ impl fmt::Display for FinanceLifeState {
 impl State for FinanceLifeState {
     fn reset(&mut self) {
         self.step = 0;
-        self.rng = StdRng::seed_from_u64(0x5EED_F17Eu64.wrapping_add(self.run_id * 1_000_003));
+        self.rng = StdRng::seed_from_u64(base_seed().wrapping_add(self.run_id * 1_000_003));
         self.reset_history();
         self.reset_year_accumulators();
         self.total_bankruptcies = 0;

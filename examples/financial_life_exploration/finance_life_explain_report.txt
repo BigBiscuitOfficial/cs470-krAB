@@ -1,0 +1,10 @@
+=== Best Policy Explanation ===
+Genome: 0.00000;0.70182;0.00113;0.00000;0.25848;0.43122;0.38034
+Fitness: 7.6257
+Final metrics: avg net worth $2441169, avg income $12000, avg debt $23122, spend ratio 2.28, bankruptcy 36.7%, retirement coverage 1.86
+Event totals across 8 repetitions: promotions 351, training 71, shocks 6361, family events 543, home purchases 189, inheritances 167, bankruptcies 5245
+Best policy profile: free spender, aggressive saver, career-cautious, risk-averse, shock-sensitive
+Why it won: it built strong long-term wealth, despite carrying meaningful debt pressure, the policy accepted higher spending to support other gains, and bankruptcy was the main weakness. retirement coverage met the benchmark.
+Career story: promotions were frequent (351 total), so income growth came mostly from career advancement rather than extra training.
+Risk story: 6361 shocks translated into 5245 bankruptcies, so the winning policy likely beat others by surviving instability better, not by avoiding it.
+Household story: it handled real life-cycle costs: 543 family expansions, 189 home purchases, and 167 inheritances shaped the final balance sheet.

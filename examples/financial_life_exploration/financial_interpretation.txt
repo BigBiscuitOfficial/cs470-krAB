@@ -1,0 +1,23 @@
+Financial Run Interpretation
+Best fitness: 7.625713 at generation 138, index 199
+Scale config: households=48, horizon=60, individuals=256, max_generation=150, repetitions=8, seed=1234
+Winning genome: 0.00000;0.70182;0.00113;0.00000;0.25848;0.43122;0.38034
+
+Policy profile: very low frugality, strong savings discipline, low career drive, low market risk
+Gene-by-gene reading:
+- frugality: 0.00000 -> very low frugality
+- savings_discipline: 0.70182 -> strong savings discipline
+- career_drive: 0.00113 -> low career drive
+- risk_tolerance: 0.00000 -> low market risk
+- resilience: 0.25848 -> low resilience
+- family_pressure: 0.43122 -> moderate family pressure
+- education_investment: 0.38034 -> moderate education investment
+
+Why this policy likely won:
+- strong saving behavior likely helped retain income instead of letting cash leak into consumption
+- very low frugality means this policy was not winning by austerity alone
+- low career drive suggests the policy won more by stability than by chasing income growth
+- low risk tolerance likely reduced exposure to volatile asset outcomes
+- low resilience means the policy probably depended on avoiding trouble rather than recovering from it
+
+Demo takeaway: this run did not just find a lower fitness number; it found a policy profile with a readable financial strategy.
