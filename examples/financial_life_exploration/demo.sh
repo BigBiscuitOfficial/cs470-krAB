@@ -6,6 +6,10 @@ mkdir -p outcomes/
 
 cargo build --release --features "distributed_mpi mpi_verbose_timing"
 
+export LIBCLANG_PATH=/shared/common/clang+llvm-14.0.0/lib/
+export BINDGEN_EXTRA_CLANG_ARGS="-I/usr/lib/gcc/x86_64-redhat-linux/8/include"
+
+
 export FIN_SEED=$(echo $RANDOM) 
 export FIN_HORIZON=60 
 export FIN_REPETITIONS=20
