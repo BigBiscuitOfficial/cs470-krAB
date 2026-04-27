@@ -93,7 +93,7 @@ cargo build --release --features "distributed_mpi mpi_verbose_timing"
 The executable will be written to:
 
 ```text
-examples/financial_life_exploration/target/release/finance_life_exploration
+examples/target/release/finance_life_exploration
 ```
 
 Request an allocation and launch the program with MPI (there is a current cluster issue with MPI batch jobs):
