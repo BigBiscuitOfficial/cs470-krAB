@@ -238,7 +238,7 @@ def build_demo_summary(args: argparse.Namespace) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers = parser.add_subparsers(dest="command")
 
     metrics = subparsers.add_parser("metrics", help="Parse one run log.")
     metrics.add_argument("log_file")
@@ -264,7 +264,10 @@ def parse_args() -> argparse.Namespace:
     summary.add_argument("seed")
     summary.set_defaults(func=build_demo_summary)
 
-    return parser.parse_args()
+    args = parser.parse_args()
+    if not hasattr(args, "func"):
+        parser.error("a command is required")
+    return args
 
 
 def main() -> int:
