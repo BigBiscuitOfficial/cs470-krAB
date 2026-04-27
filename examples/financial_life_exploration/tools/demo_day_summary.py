@@ -84,7 +84,13 @@ def calculate_efficiency(args: argparse.Namespace) -> None:
 
 def load_rows(summary_path: Path) -> List[Dict[str, str]]:
     with summary_path.open("r", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle, delimiter="\t"))
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+
+    for row in rows:
+        if "run_elapsed_seconds" not in row and "wall_elapsed_seconds" in row:
+            row["run_elapsed_seconds"] = row["wall_elapsed_seconds"]
+
+    return rows
 
 
 def extract_strategy_lines(interpretation_path: Path) -> List[str]:
@@ -150,8 +156,8 @@ def build_demo_summary(args: argparse.Namespace) -> None:
     best_efficiency = (
         max(rows, key=lambda row: as_float(row, "efficiency")) if rows else None
     )
-    fastest_wall = (
-        min(rows, key=lambda row: as_float(row, "wall_elapsed_seconds", float("inf")))
+    fastest_run = (
+        min(rows, key=lambda row: as_float(row, "run_elapsed_seconds", float("inf")))
         if rows
         else None
     )
@@ -185,7 +191,7 @@ def build_demo_summary(args: argparse.Namespace) -> None:
             "  Baseline: "
             f"{baseline['procs']} process, "
             f"MPI avg generation time {baseline['mpi_avg_total_seconds']}s, "
-            f"wall time {baseline['wall_elapsed_seconds']}s."
+            f"program-reported run time {baseline['run_elapsed_seconds']}s."
         )
     if best_speedup:
         lines.append(
@@ -198,11 +204,11 @@ def build_demo_summary(args: argparse.Namespace) -> None:
             "  Best parallel efficiency: "
             f"{best_efficiency['efficiency']} at {best_efficiency['procs']} processes."
         )
-    if fastest_wall:
+    if fastest_run:
         lines.append(
-            "  Fastest wall-clock run: "
-            f"{fastest_wall['wall_elapsed_seconds']}s at "
-            f"{fastest_wall['procs']} processes."
+            "  Fastest program-reported run: "
+            f"{fastest_run['run_elapsed_seconds']}s at "
+            f"{fastest_run['procs']} processes."
         )
     if last:
         lines.append(
@@ -221,7 +227,7 @@ def build_demo_summary(args: argparse.Namespace) -> None:
         [
             "",
             "Scaling table:",
-            "  procs | mpi_avg_s | speedup | efficiency | overhead | wall_s | "
+            "  procs | mpi_avg_s | speedup | efficiency | overhead | run_s  | "
             "best_fitness | status",
         ]
     )
@@ -229,7 +235,7 @@ def build_demo_summary(args: argparse.Namespace) -> None:
         lines.append(
             "  {procs:>5} | {mpi_avg_total_seconds:>9} | {speedup:>7} | "
             "{efficiency:>10} | {avg_overhead_ratio:>8} | "
-            "{wall_elapsed_seconds:>6} | {best_fitness:>12} | "
+            "{run_elapsed_seconds:>6} | {best_fitness:>12} | "
             "{interpretation_status}".format(**row)
         )
 

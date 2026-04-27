@@ -26,7 +26,7 @@ DEMO_DAY_SUMMARY_FILE="outcomes/demo_day_summary.txt"
 echo "Building financial_life_exploration..."
 cargo build --release --features "distributed_mpi mpi_verbose_timing"
 
-echo -e "procs\twall_elapsed_seconds\tmpi_avg_total_seconds\tspeedup\tefficiency\tavg_overhead_ratio\ttotal_run_seconds\tbest_fitness\tinterpretation_status" > "$SUMMARY_FILE"
+echo -e "procs\trun_elapsed_seconds\tmpi_avg_total_seconds\tspeedup\tefficiency\tavg_overhead_ratio\tbest_fitness\tinterpretation_status" > "$SUMMARY_FILE"
 baseline_file=""
 baseline_mpi_avg_total=""
 baseline_procs=""
@@ -48,9 +48,7 @@ do
     diff_file="outcomes/financial_interpretation_${i}_procs.diff"
 
     echo "Running with ${i} MPI process(es)..."
-    start_seconds=$SECONDS
     salloc -Q -n "$i" mpirun ../target/release/finance_life_exploration > "$log_file" 2>&1
-    elapsed=$((SECONDS - start_seconds))
 
 
     python3 tools/interpret_financial_run.py "$log_file" -o "$interpretation_file"
@@ -80,8 +78,8 @@ do
         diff -u "$baseline_file" "$interpretation_file" > "$diff_file" || true
     fi
 
-    echo -e "${i}\t${elapsed}\t${mpi_avg_total}\t${speedup}\t${efficiency}\t${avg_overhead}\t${total_run}\t${best_fitness}\t${interpretation_status}" >> "$SUMMARY_FILE"
-    echo "Completed ${i} proc run in ${elapsed}s: speedup=${speedup}, efficiency=${efficiency}, best_fitness=${best_fitness} (${interpretation_status})"
+    echo -e "${i}\t${total_run}\t${mpi_avg_total}\t${speedup}\t${efficiency}\t${avg_overhead}\t${best_fitness}\t${interpretation_status}" >> "$SUMMARY_FILE"
+    echo "Completed ${i} proc run in ${total_run}s: speedup=${speedup}, efficiency=${efficiency}, best_fitness=${best_fitness} (${interpretation_status})"
     echo
 done
 
